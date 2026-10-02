@@ -4,47 +4,71 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Yashdeep Singh: Business Development & Marketing at Hydro-Berlin, Digital Business student at BHT Berlin, RoboPay researcher at HTW Berlin.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%2313221F'/><path d='M32 12c9 12 15 20 15 28a15 15 0 0 1-30 0c0-8 6-16 15-28z' fill='%233A82DE'/></svg>">
+<meta property="og:title" content="Yashdeep Singh">
+<meta property="og:description" content="Business development, AI and water tech. Hydro-Berlin, BHT Berlin, RoboPay at HTW Berlin.">
+<meta property="og:url" content="https://yashdeepsingh.com/">
+<meta name="theme-color" content="#E8EEEA">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Yashdeep Singh</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Geist:wght@400;500;600&display=swap">
 <style>
 /* Layout: the page is a borehole. The name floats on a water surface, then you scroll down through
    depth layers; a gauge counts the meters and the career is drawn as a geological cross-section. */
 :root{
   --bg:#E8EEEA; --surface:#DCE5E0; --fg:#13221F; --muted:#53655E; --line:#C2CFC8;
-  --accent:#1C57C2; --water:#3A82DE; --sediment:#A57728;
+  --accent:#1D5BC6; --water:#3A82DE; --ink-soft:#2C3D39;
   --s1:#C9A86A; --s2:#9C7B4C; --s3:#6F8A7A; --s4:#3A82DE; --s5:#7B6AA8;
   --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
-  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#081215; --surface:#0F1D21; --fg:#DCE8E4; --muted:#8EA29B; --line:#22363A;
-  --accent:#7DAFFF; --water:#4B93F2; --sediment:#D6A955;
+  --accent:#86B5FF; --water:#4B93F2; --ink-soft:#B9C8C3;
   --s1:#B8964F; --s2:#8C6A3C; --s3:#5E7C6C; --s4:#4B93F2; --s5:#8E7DC2; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#081215; --surface:#0F1D21; --fg:#DCE8E4; --muted:#8EA29B; --line:#22363A;
-  --accent:#7DAFFF; --water:#4B93F2; --sediment:#D6A955;
+  --accent:#86B5FF; --water:#4B93F2; --ink-soft:#B9C8C3;
   --s1:#B8964F; --s2:#8C6A3C; --s3:#5E7C6C; --s4:#4B93F2; --s5:#8E7DC2; color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+:root{--ease:cubic-bezier(.32,.72,0,1);--r-out:26px;--r-in:20px}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:var(--accent);text-underline-offset:3px}
 a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 p{margin:0 0 14px;max-width:62ch}
 .muted{color:var(--muted)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:30;opacity:.06;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.skip{position:absolute;left:16px;top:-60px;z-index:40;background:var(--fg);color:var(--bg);padding:10px 14px;border-radius:999px;font-weight:600;text-decoration:none}
+.skip:focus{top:16px}
 .num{font-family:var(--display);font-variant-numeric:tabular-nums}
 
+/* Floating nav */
+.nav{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:2px;padding:5px;border-radius:999px;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--fg) 9%,transparent),0 10px 30px -12px color-mix(in srgb,var(--accent) 30%,transparent);max-width:calc(100% - 32px)}
+.nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:7px 14px;border-radius:999px;white-space:nowrap;transition:color .3s var(--ease),background .3s var(--ease)}
+.nav a:hover{color:var(--fg)}
+.nav a.on{color:var(--bg);background:var(--fg)}
+@media (max-width:420px){.nav a{padding:7px 10px;font-size:13px}}
+
 /* Hero: name on the waterline */
-.hero{position:relative;overflow:hidden;cursor:crosshair}
-.hero-inner{position:relative;max-width:1180px;margin:0 auto;padding:clamp(64px,10vw,130px) 20px 0}
+.hero{position:relative;overflow:hidden;background:radial-gradient(120% 80% at 85% 110%,color-mix(in srgb,var(--water) 16%,transparent),transparent 60%)}
+.hero-inner{position:relative;max-width:1180px;margin:0 auto;padding:clamp(104px,11vw,140px) 20px 0}
 .intro{font-size:clamp(16px,1.6vw,18px);color:var(--muted);margin:0 0 18px}
 h1{font-family:var(--display);font-weight:800;font-size:clamp(42px,10.4vw,150px);line-height:1;letter-spacing:-.04em;margin:0;white-space:nowrap;position:relative;z-index:2}
 #water{display:block;width:100%;position:absolute;left:0;z-index:1;pointer-events:none}
 .below{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end;padding-bottom:56px}
 .lede{font-size:clamp(19px,2.1vw,24px);line-height:1.42;margin:0;max-width:30ch}
-.hint{font-size:14px;color:var(--muted);justify-self:end;text-align:right;max-width:24ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;justify-self:end}
+.pill{display:inline-flex;align-items:center;gap:12px;padding:7px 7px 7px 20px;border-radius:999px;background:var(--fg);color:var(--bg);font-weight:600;font-size:15px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;transition:transform .5s var(--ease),background .4s var(--ease)}
+.pill .ic{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--bg) 16%,transparent);transition:transform .5s var(--ease)}
+.pill .ic svg{width:15px;height:15px}
+.pill:hover{background:var(--accent)}
+.pill:hover .ic{transform:translate(3px,-1px) scale(1.06)}
+.pill:active{transform:scale(.98)}
+.tlink{color:var(--fg);font-weight:600;font-size:15px;text-decoration:none;border-bottom:1.5px solid var(--line);padding-bottom:2px;transition:border-color .3s var(--ease)}
+.tlink:hover{border-color:var(--accent)}
 .spacer{display:block}
 
 /* Shaft + gauge */
@@ -53,13 +77,13 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(42px,10.4vw,150px)
 .gauge-read{font-family:var(--display);font-weight:600;font-size:34px;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
 .gauge-unit{font-size:13px;color:var(--muted);margin-top:4px}
 .gauge-track{position:relative;flex:1;width:2px;background:var(--line);margin:22px 0 0 6px}
-.gauge-fill{position:absolute;top:0;left:0;width:2px;background:var(--water);height:0}
-.gauge-dot{position:absolute;left:-5px;top:-6px;width:12px;height:12px;border-radius:50%;background:var(--water);box-shadow:0 0 0 5px color-mix(in srgb,var(--water) 22%,transparent)}
+.gauge-fill{position:absolute;top:0;left:0;width:2px;background:var(--water);height:0;transform:scaleY(0)}
+.gauge-dot{position:absolute;left:-5px;top:-6px;will-change:transform;width:12px;height:12px;border-radius:50%;background:var(--water);box-shadow:0 0 0 5px color-mix(in srgb,var(--water) 22%,transparent)}
 .gauge-mark{position:absolute;left:12px;font-size:12px;color:var(--muted);white-space:nowrap;transform:translateY(-50%)}
 
-.layer{padding-block:76px;border-bottom:1px solid var(--line);min-width:0}
+.layer{padding-block:104px 112px;border-bottom:1px solid var(--line);min-width:0}
 .layer:last-child{border-bottom:0}
-.depth{display:flex;align-items:baseline;gap:12px;color:var(--sediment);font-size:15px}
+.depth{display:flex;align-items:baseline;gap:12px;color:var(--muted);font-size:14px}
 .depth b{font-family:var(--display);font-weight:600;font-size:20px;font-variant-numeric:tabular-nums}
 .depth::after{content:"";flex:1;align-self:center;height:1px;background:repeating-linear-gradient(90deg,var(--line) 0 6px,transparent 6px 12px)}
 h2{font-family:var(--display);font-weight:600;font-size:clamp(32px,4.6vw,54px);line-height:1.02;letter-spacing:-.025em;margin:18px 0 22px;text-wrap:balance;max-width:20ch}
@@ -75,7 +99,8 @@ ul.did li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;heig
 .fact dd{margin:4px 0 0;font-family:var(--display);font-size:22px;font-weight:600;line-height:1.2}
 
 /* Hydro panel */
-.panel{background:var(--surface);border-radius:16px;padding:20px;min-width:0}
+.shell{padding:6px;border-radius:var(--r-out);background:color-mix(in srgb,var(--fg) 4%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--fg) 7%,transparent);min-width:0}
+.panel{background:var(--surface);border-radius:var(--r-in);padding:22px;min-width:0;box-shadow:inset 0 1px 0 color-mix(in srgb,#fff 35%,transparent),0 18px 40px -24px color-mix(in srgb,var(--accent) 35%,transparent)}
 .panel svg{width:100%;height:auto;display:block}
 .cap{font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:8px}
 .hg-line{fill:none;stroke:var(--water);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:900;stroke-dashoffset:900}
@@ -105,11 +130,11 @@ ul.did li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;heig
 /* RoboPay */
 .robo-stage{position:relative;height:130px;border-bottom:2px solid var(--line);overflow:hidden}
 .geo{position:absolute;right:6px;bottom:0;width:96px;height:96px;border-radius:50%;border:1.5px dashed var(--water);transform:translateY(50%);opacity:0;transition:opacity .3s}
-.door{position:absolute;right:30px;bottom:0;width:36px;height:64px;border:2px solid var(--sediment);border-bottom:0;border-radius:4px 4px 0 0}
+.door{position:absolute;right:30px;bottom:0;width:36px;height:64px;border:2px solid var(--muted);border-bottom:0;border-radius:4px 4px 0 0}
 .qr{position:absolute;right:76px;bottom:70px;width:22px;height:22px;opacity:0;transition:opacity .3s;background:
   conic-gradient(from 90deg at 40% 40%,var(--fg) 25%,transparent 0) 0 0/8px 8px;border:2px solid var(--fg)}
 .scan{position:absolute;right:20px;bottom:6px;width:60px;height:70px;opacity:0;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--accent) 35%,transparent),transparent);transition:opacity .3s}
-.bot{position:absolute;bottom:0;left:4px;width:52px;height:46px;transition:left 1.5s cubic-bezier(.5,0,.3,1)}
+.bot{position:absolute;bottom:0;left:4px;width:52px;height:46px;transition:transform 1.5s cubic-bezier(.6,0,.2,1)}
 .bot .b{position:absolute;inset:4px 4px 12px;background:var(--fg);border-radius:10px}
 .bot .e{position:absolute;top:13px;width:7px;height:7px;border-radius:50%;background:var(--water)}
 .bot .e.l{left:15px}.bot .e.r{right:15px}
@@ -118,7 +143,7 @@ ul.did li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;heig
 .moving .w{animation:spin .4s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .seg{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
-.seg button{font:inherit;font-size:14px;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--fg);cursor:pointer}
+.seg button{transition:background .3s var(--ease),color .3s var(--ease);font:inherit;font-size:14px;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--fg);cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .steps{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:6px;font-size:15px}
 .steps li{display:flex;gap:10px;align-items:center;color:var(--muted);transition:color .25s}
@@ -126,51 +151,57 @@ ul.did li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;heig
 .steps li.done{color:var(--fg)}
 .steps li.done::before{background:var(--water);border-color:var(--water)}
 .ledger{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;min-height:30px}
-.tx{font-size:12.5px;padding:5px 9px;border-radius:6px;border:1px solid var(--accent);color:var(--accent);font-variant-numeric:tabular-nums;animation:pop .35s ease-out both}
+.tx{font-size:12.5px;padding:5px 11px;border-radius:999px;border:1px solid var(--accent);color:var(--accent);font-variant-numeric:tabular-nums;animation:pop .35s ease-out both}
 @keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
-.go{font:inherit;font-weight:600;font-size:15px;background:var(--accent);color:var(--bg);border:0;border-radius:999px;padding:11px 20px;cursor:pointer;margin-top:16px}
-.go:disabled{opacity:.5;cursor:default}
+.go{margin-top:18px}
+.go:disabled{opacity:.45;cursor:default;transform:none}
 
 /* Award */
 .award{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;margin-top:48px;padding-top:40px;border-top:1px dashed var(--line)}
-.seal{width:112px;height:112px;border-radius:50%;display:grid;place-items:center;text-align:center;font-family:var(--display);font-weight:800;font-size:28px;line-height:1;color:var(--bg);background:var(--sediment);box-shadow:inset 0 0 0 6px var(--bg),inset 0 0 0 8px var(--sediment)}
+.seal{width:112px;height:112px;border-radius:50%;display:grid;place-items:center;text-align:center;font-family:var(--display);font-weight:800;font-size:28px;line-height:1;color:var(--bg);background:var(--accent);box-shadow:inset 0 0 0 6px var(--bg),inset 0 0 0 8px var(--accent)}
 .seal small{display:block;font-size:12px;font-weight:600;margin-top:4px}
 
 /* Certs + languages */
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px}
 .certs{display:grid;gap:18px}
 .cert h3{font-size:19px}
-.lang{display:grid;gap:14px}
-.lang-row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:14px;align-items:center;font-size:16px}
-.meter{height:10px;border-radius:99px;background:var(--line);overflow:hidden}
-.meter i{display:block;height:100%;background:var(--water);border-radius:99px}
-.lang-note{font-size:13px;color:var(--muted);grid-column:2}
+.lang{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 24px}
+.lang-item{display:grid;gap:2px}
+.lang-lvl{font-family:var(--display);font-weight:800;font-size:clamp(36px,4.4vw,52px);line-height:1;letter-spacing:-.03em}
+.lang-item:first-child .lang-lvl{color:var(--accent)}
+.lang-name{font-size:16px;color:var(--muted)}
+
+/* Scroll reveal (only below-the-fold elements start hidden) */
+.rv{transition:opacity .9s var(--ease),transform .9s var(--ease),filter .9s var(--ease)}
+.rv.pre{opacity:0;transform:translateY(28px);filter:blur(6px)}
 
 /* Contact */
 .contact h2{font-size:clamp(44px,8vw,96px);letter-spacing:-.04em}
 .links{display:flex;flex-wrap:wrap;gap:14px 30px;font-size:20px;align-items:baseline}
 .links a{font-weight:600}
 .note{font-size:13px;color:var(--muted);margin-top:26px}
-footer{font-size:13px;color:var(--muted);max-width:1180px;margin:0 auto;padding:26px 20px 90px;border-top:1px solid var(--line)}
+footer{font-size:13px;color:var(--muted);max-width:1180px;margin:0 auto;padding:28px 20px 96px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 /* Sound toggle */
-.sound{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:10;display:flex;align-items:center;gap:8px;font:inherit;font-size:14px;font-weight:600;padding:10px 15px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer;box-shadow:0 6px 20px color-mix(in srgb,var(--fg) 12%,transparent)}
+.sound{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:10;display:flex;align-items:center;gap:8px;font:inherit;font-size:14px;font-weight:600;padding:10px 15px;border-radius:999px;border:0;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--fg);cursor:pointer;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--fg) 10%,transparent),0 10px 30px -12px color-mix(in srgb,var(--accent) 35%,transparent);transition:transform .4s var(--ease)}
+.sound:active{transform:scale(.97)}
 .sound svg{width:18px;height:18px}
 .sound .wv{opacity:.25;transition:opacity .2s}
 .sound[aria-pressed="true"] .wv{opacity:1}
-.sound[aria-pressed="true"]{border-color:var(--water)}
+.sound[aria-pressed="true"]{box-shadow:inset 0 0 0 1.5px var(--water),0 10px 30px -12px color-mix(in srgb,var(--accent) 45%,transparent)}
 
 @media (max-width:860px){
   .shaft{grid-template-columns:minmax(0,1fr);gap:0}
   .gauge{display:none}
   .two,.split,.below{grid-template-columns:minmax(0,1fr)}
-  .hint{justify-self:start;text-align:left}
+  .ctas{justify-self:start}
+  .layer{padding-block:72px 80px}
   .role{grid-template-columns:minmax(0,1fr);gap:4px}
-  .layer{padding-block:58px}
 }
-@media (max-width:480px){.award{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:480px){.award{grid-template-columns:minmax(0,1fr)}.lang{grid-template-columns:minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
+  .rv.pre{opacity:1;transform:none;filter:none}
   .hg-line{stroke-dashoffset:0}
   html{scroll-behavior:auto}
 }
@@ -179,6 +210,14 @@ footer{font-size:13px;color:var(--muted);max-width:1180px;margin:0 auto;padding:
 <body>
 
 
+<a class="skip" href="#about">Skip to content</a>
+<nav class="nav" aria-label="Sections">
+  <a href="#about" data-sec="about">About</a>
+  <a href="#experience" data-sec="experience">Work</a>
+  <a href="#robopay" data-sec="robopay">RoboPay</a>
+  <a href="#contact" data-sec="contact">Contact</a>
+</nav>
+
 <button class="sound" id="soundBtn" type="button" aria-pressed="false" aria-label="Toggle sound effects">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path class="wv" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>
   <span id="soundLbl">Sound off</span>
@@ -186,13 +225,16 @@ footer{font-size:13px;color:var(--muted);max-width:1180px;margin:0 auto;padding:
 
 <header class="hero" id="hero">
   <div class="hero-inner" id="heroInner">
-    <p class="intro">Business development, AI and water tech, Berlin</p>
+    <p class="intro">Business development, AI and water tech</p>
     <h1 id="name">Yashdeep Singh</h1>
     <canvas id="water" aria-hidden="true"></canvas>
     <div class="spacer" id="spacer"></div>
     <div class="below">
-      <p class="lede">I help groundwater tech find its customers at Hydro-Berlin, and I'm building payment rails for robots at HTW Berlin.</p>
-      <p class="hint">Tap the water. Turn on sound for the full dive.</p>
+      <p class="lede">I help groundwater tech find customers at Hydro-Berlin and build payment rails for robots at HTW Berlin.</p>
+      <div class="ctas">
+        <a class="pill" href="#experience">See my work<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span></a>
+        <a class="tlink" href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">Message me</a>
+      </div>
     </div>
   </div>
 </header>
@@ -209,7 +251,7 @@ footer{font-size:13px;color:var(--muted);max-width:1180px;margin:0 auto;padding:
       <div class="depth"><b>0.0 m</b> Surface</div>
       <h2>Digital Business student who likes to know what's happening underneath.</h2>
       <p>I study Digital Business at BHT Berlin and work across business development, SaaS, marketing and AI. I build AI agents that take over research and email work, and I learned marketing the hands-on way: running ads, shooting videos and building the online shop for my family's business.</p>
-      <div class="facts">
+      <div class="rv facts">
         <dl class="fact"><dt>Studying</dt><dd>B.Sc. Digital Business, BHT Berlin</dd></dl>
         <dl class="fact"><dt>Graduating</dt><dd class="num">2027</dd></dl>
         <dl class="fact"><dt>Based in</dt><dd>Berlin metropolitan area</dd></dl>
@@ -231,7 +273,7 @@ footer{font-size:13px;color:var(--muted);max-width:1180px;margin:0 auto;padding:
             <li>Wrote blog posts and product communication, and supported launches</li>
           </ul>
         </div>
-        <figure class="panel" id="hydroFig" style="margin:0">
+        <div class="shell rv"><figure class="panel" id="hydroFig" style="margin:0">
           <svg viewBox="0 0 400 190" role="img" aria-label="Example groundwater level curve over twelve months">
             <line class="hg-grid" x1="38" y1="30" x2="392" y2="30"/>
             <line class="hg-grid" x1="38" y1="85" x2="392" y2="85"/>
@@ -247,7 +289,7 @@ footer{font-size:13px;color:var(--muted);max-width:1180px;margin:0 auto;padding:
             <text class="lbl" x="392" y="168" text-anchor="end">Dec</text>
           </svg>
           <figcaption class="cap"><span>Groundwater level in meters below ground</span><span>Example data</span></figcaption>
-        </figure>
+        </figure></div>
       </div>
     </section>
 
@@ -255,10 +297,10 @@ footer{font-size:13px;color:var(--muted);max-width:1180px;margin:0 auto;padding:
       <div class="depth"><b>6.8 m</b> Sediment record</div>
       <h2>Six years of layers</h2>
       <p class="muted">Each band is a role, drawn to scale. Click one to jump to it.</p>
-      <div class="strata-wrap">
+      <div class="rv strata-wrap">
         <svg class="strata" id="strata" viewBox="0 0 760 236" role="img" aria-label="Timeline of roles from 2020 to 2026"></svg>
       </div>
-      <div class="roles">
+      <div class="rv roles">
         <article class="role" id="r-hydro">
           <div class="when"><span class="swatch" style="background:var(--s4)"></span>2026 to today</div>
           <div><h3>Business Development &amp; Marketing</h3><p class="org">Hydro-Berlin, Berlin</p><p>Groundwater monitoring startup. Lead-gen agents, ENOLA product testing, website, content and launches.</p></div>
@@ -289,7 +331,7 @@ footer{font-size:13px;color:var(--muted);max-width:1180px;margin:0 auto;padding:
           <p>Proof of delivery comes from GPS geofencing, a QR code scan at handover, or an AI agent that checks the delivery visually.</p>
           <p class="muted">With Kevin Ehrentraut and Xinyan Liu, supervised by Prof. Dr. Alexandra K. Mikityuk.</p>
         </div>
-        <div class="panel">
+        <div class="shell rv"><div class="panel">
           <div class="robo-stage" id="stage">
             <div class="geo" id="geo"></div>
             <div class="qr" id="qr"></div>
@@ -309,11 +351,11 @@ footer{font-size:13px;color:var(--muted);max-width:1180px;margin:0 auto;padding:
             <li>Escrow releases payment on Solana</li>
           </ol>
           <div class="ledger" id="ledger" aria-live="polite"></div>
-          <button class="go" id="go" type="button">Run a delivery</button>
-        </div>
+          <button class="pill go" id="go" type="button">Run a delivery<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+        </div></div>
       </div>
 
-      <div class="award">
+      <div class="rv award">
         <div class="seal" aria-hidden="true"><div>2022<small>Jugend forscht</small></div></div>
         <div>
           <h3>Water supply for Tesla Gigafactory 4</h3>
@@ -337,10 +379,10 @@ footer{font-size:13px;color:var(--muted);max-width:1180px;margin:0 auto;padding:
         <div>
           <h2>Languages</h2>
           <div class="lang">
-            <div class="lang-row"><span>German</span><span class="meter"><i style="width:100%"></i></span><span class="lang-note">C2</span></div>
-            <div class="lang-row"><span>English</span><span class="meter"><i style="width:88%"></i></span><span class="lang-note">Fluent</span></div>
-            <div class="lang-row"><span>Hindi</span><span class="meter"><i style="width:94%"></i></span><span class="lang-note">Native</span></div>
-            <div class="lang-row"><span>Punjabi</span><span class="meter"><i style="width:94%"></i></span><span class="lang-note">Native</span></div>
+            <div class="lang-item"><span class="lang-lvl">C2</span><span class="lang-name">German</span></div>
+            <div class="lang-item"><span class="lang-lvl">Fluent</span><span class="lang-name">English</span></div>
+            <div class="lang-item"><span class="lang-lvl">Native</span><span class="lang-name">Hindi</span></div>
+            <div class="lang-item"><span class="lang-lvl">Native</span><span class="lang-name">Punjabi</span></div>
           </div>
         </div>
       </div>
@@ -349,15 +391,15 @@ footer{font-size:13px;color:var(--muted);max-width:1180px;margin:0 auto;padding:
     <section class="layer contact" data-depth="15" data-name="Contact" id="contact">
       <div class="depth"><b>15.0 m</b> You reached the bottom</div>
       <h2>Let's talk.</h2>
-      <div class="links">
-        <a href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">LinkedIn</a>
-        <span>yashdeepsingh.com</span>
+      <p class="muted" style="font-size:19px;max-width:44ch">Open to working student roles, research collaborations and startup projects in Berlin.</p>
+      <div class="links" style="margin-top:26px">
+        <a class="pill" href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">Message me<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
       </div>
       
     </section>
   </main>
 </div>
-<footer>© 2026 Yashdeep Singh, Berlin</footer>
+<footer><span>© 2026 Yashdeep Singh</span><span>yashdeepsingh.com</span></footer>
 
 <script>
 (function(){
@@ -496,30 +538,40 @@ footer{font-size:13px;color:var(--muted);max-width:1180px;margin:0 auto;padding:
   go.addEventListener('click',async()=>{
     if(busy)return;busy=true;go.disabled=true;steps.forEach(s=>s.classList.remove('done'));
     await wait(200);steps[0].classList.add('done');sfx.lock();
-    await wait(450);bot.classList.add('moving');bot.style.left=(stage.clientWidth-112)+'px';sfx.motor();steps[1].classList.add('done');
+    await wait(450);bot.classList.add('moving');bot.style.transform=`translateX(${stage.clientWidth-116}px)`;sfx.motor();steps[1].classList.add('done');
     await wait(1550);bot.classList.remove('moving');
     const vis=mode==='gps'?geo:mode==='qr'?qr:scan;vis.style.opacity=1;
     await wait(500);sfx.beep();steps[2].classList.add('done');
     await wait(600);vis.style.opacity=0;steps[3].classList.add('done');sfx.chime();
-    const tx=document.createElement('span');tx.className='tx';tx.textContent=`#${n} released · ${Math.random().toString(36).slice(2,7)}`;ledger.appendChild(tx);if(ledger.children.length>4)ledger.firstChild.remove();n++;
-    await wait(500);bot.classList.add('moving');bot.style.left='4px';
-    await wait(1550);bot.classList.remove('moving');busy=false;go.disabled=false;go.textContent='Run another delivery';
+    const tx=document.createElement('span');tx.className='tx';tx.textContent=`#${n} paid, tx ${Math.random().toString(36).slice(2,7)}`;ledger.appendChild(tx);if(ledger.children.length>4)ledger.firstChild.remove();n++;
+    await wait(500);bot.classList.add('moving');bot.style.transform='translateX(0)';
+    await wait(1550);bot.classList.remove('moving');busy=false;go.disabled=false;go.firstChild.textContent='Run another delivery';
   });
 
   /* ---------- Depth gauge + sonar ping per layer ---------- */
   const layers=[...document.querySelectorAll('.layer')],read=document.getElementById('gRead'),fill=document.getElementById('gFill'),dot=document.getElementById('gDot'),track=document.getElementById('gTrack');
   layers.forEach(l=>{const m=document.createElement('span');m.className='gauge-mark';m.dataset.d=l.dataset.depth;m.textContent=l.dataset.name;track.appendChild(m)});
   const marks=[...track.querySelectorAll('.gauge-mark')];
+  const navLinks=[...document.querySelectorAll('.nav a')];
+  const secMap={about:'about',hydro:'about',experience:'experience',robopay:'robopay',skills:'robopay',contact:'contact'};
+  const activeSec=i=>i<0?'':secMap[layers[i].id];
   let cur=-1,lastPing=0;
   function gauge(){
     const mid=innerHeight*.45;let depth=0,idx=-1;
     layers.forEach((l,i)=>{const r=l.getBoundingClientRect(),d0=+l.dataset.depth,d1=layers[i+1]?+layers[i+1].dataset.depth:d0;if(r.top<=mid){idx=i;depth=d0+(d1-d0)*Math.min(1,(mid-r.top)/r.height)}});
     read.textContent=depth.toFixed(1);
-    const H=track.clientHeight,p=depth/15*H;fill.style.height=p+'px';dot.style.top=(p-6)+'px';
+    const H=track.clientHeight,p=depth/15*H;fill.style.height=H+'px';fill.style.transformOrigin='top';fill.style.transform=`scaleY(${depth/15})`;dot.style.transform=`translateY(${p}px)`;
+    navLinks.forEach(a=>a.classList.toggle('on',a.dataset.sec===activeSec(idx)));
     marks.forEach(m=>m.style.top=(+m.dataset.d/15*H)+'px');
     if(idx!==cur){if(idx>cur&&idx>=0){const n=performance.now();if(n-lastPing>500){sfx.ping(620-idx*70);lastPing=n}}cur=idx}
   }
-  addEventListener('scroll',gauge,{passive:true});addEventListener('resize',gauge);gauge();
+  let ticking=false;addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(()=>{gauge();ticking=false})}},{passive:true});addEventListener('resize',gauge);gauge();
+
+  /* ---------- Reveal on scroll (elements already on screen stay visible) ---------- */
+  if('IntersectionObserver' in window && !reduce){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.rv').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre');io.observe(el)}});
+  }
 })();
 </script>
 
