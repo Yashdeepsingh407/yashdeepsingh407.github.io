@@ -29,6 +29,7 @@ header.page{padding-block:64px 0}
 h1{font-family:var(--display);font-weight:800;font-size:clamp(42px,7.4vw,84px);line-height:.95;letter-spacing:-.04em;margin:0;padding-bottom:4px;text-wrap:balance}
 .refl{font-family:var(--display);font-weight:800;font-size:clamp(42px,7.4vw,84px);line-height:.95;letter-spacing:-.04em;margin:0;transform:scaleY(-1);opacity:.16;color:var(--fg);
   -webkit-mask-image:linear-gradient(to top,#000 0%,transparent 70%);mask-image:linear-gradient(to top,#000 0%,transparent 70%);height:.55em;overflow:hidden;display:flex;align-items:flex-end;filter:blur(.6px);user-select:none;pointer-events:none}
+.refl::after{content:attr(data-t)}
 .lede{font-size:clamp(19px,2.2vw,23px);line-height:1.45;max-width:38ch;margin:6px 0 0}
 .meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:36px 0 0;padding-top:18px;border-top:1px solid var(--line)}
 .meta dt{font-size:13px;color:var(--muted)}.meta dd{margin:2px 0 0;font-weight:500}
