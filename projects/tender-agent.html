@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tender agent</title>
+<meta name="description" content="A daily agent that finds new public tenders for a water-tech startup and emails only open, relevant ones.">
+<link rel="canonical" href="https://yashdeepsingh.com/projects/tender-agent.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Yashdeep Singh">
+<meta property="og:title" content="Tender agent"><meta property="og:description" content="A daily agent that finds new public tenders for a water-tech startup and emails only open, relevant ones."><meta property="og:url" content="https://yashdeepsingh.com/projects/tender-agent.html">
+<meta name="twitter:card" content="summary"><meta name="theme-color" content="#E8EEEA">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%2313221F'/><path d='M32 12c9 12 15 20 15 28a15 15 0 0 1-30 0c0-8 6-16 15-28z' fill='%233A82DE'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="bar"><div class="wrap"><a class="home" href="../">Yashdeep Singh</a><nav aria-label="Main"><a href="../about.html">About</a><a href="../projects/index.html" aria-current="page">Projects</a><a href="../now.html">Now</a><a href="../#contact">Contact</a></nav></div></div>
+<div class="wrap">
+<header class="page">
+  <p class="kind">Case study, AI agent for a Berlin water-tech startup</p>
+  <div class="titlewrap"><h1>Tender agent</h1></div>
+  <div class="refl" aria-hidden="true">Tender agent</div>
+  <p class="lede">Every morning it reads Germany's public procurement data and emails only the new tenders that fit, with deadline and link.</p>
+  <div class="hviz"><svg class="viz" viewBox="0 0 360 180" aria-hidden="true">
+          <path class="v-ink" d="M110 74H250L206 122V156H154V122Z"/>
+          <g class="anim fall"><rect class="v-paper" x="164" y="18" width="32" height="40" rx="4"/><path class="v-ink" d="M171 30h18M171 38h18M171 46h11"/></g>
+          <g class="anim reject"><rect class="v-paper" x="164" y="18" width="32" height="40" rx="4"/><path class="v-ink" d="M171 30h18M171 38h18M171 46h11"/></g>
+          <g class="anim fall f3"><rect class="v-paper" x="164" y="18" width="32" height="40" rx="4"/><path class="v-ink" d="M171 30h18M171 38h18M171 46h11"/></g>
+          <g class="anim pop"><circle class="v-water" cx="180" cy="166" r="11"/><path d="M175 166l4 4 7-8" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="anim pop" style="animation-delay:2.4s"><circle class="v-water" cx="180" cy="166" r="11"/><path d="M175 166l4 4 7-8" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <path class="v-wline" d="M20 166c20-8 40 8 60 0s40 8 60 0M220 166c20-8 40 8 60 0s40 8 60 0" opacity=".5"/>
+        </svg></div>
+  <dl class="meta"><div><dt>Role</dt><dd>Built it end to end</dd></div><div><dt>Stack</dt><dd>Python, GitHub Actions, eForms data</dd></div><div><dt>Runs</dt><dd>Every morning</dd></div></dl>
+</header>
+<main id="main">
+
+<section>
+  <h2>The problem</h2>
+  <p>Finding tenders meant checking platforms by hand or paying 50 to 200 € a month for alerts.</p>
+</section>
+<section>
+  <h2>How I built it</h2>
+  <div class="flow">
+    <div><b>Fetch</b><span>Download the day's notices from the public procurement data service</span></div>
+    <div><b>Filter</b><span>Match keywords like groundwater or hydrogeology and water-sector CPV codes</span></div>
+    <div><b>Enrich</b><span>Pull the deadline and document link from each notice's eForms data</span></div>
+    <div><b>Clean</b><span>Drop tenders already sent and deadlines that have passed</span></div>
+    <div><b>Send</b><span>Email a short HTML digest and save what was sent</span></div>
+  </div>
+</section>
+<section>
+  <h2>Testing and what I fixed</h2>
+  <div class="issue"><div><h3>Problem</h3><p>Results without a link.</p></div><div><h3>Fix</h3><p>Fallback chain. Every result has a link now.</p></div></div>
+  <div class="issue"><div><h3>Problem</h3><p>Missing deadlines.</p></div><div><h3>Fix</h3><p>Read them from the original eForms record.</p></div></div>
+  <div class="issue"><div><h3>Problem</h3><p>A town fountain matched "well renovation".</p></div><div><h3>Fix</h3><p>Keywords plus sector codes.</p></div></div>
+  
+</section>
+<section>
+  <h2>Impact</h2>
+  <div class="impact">
+    <div><p class="big">0 €</p><p>Running cost.</p></div>
+    
+  </div>
+</section>
+<section>
+  <h2>What I would do next</h2>
+  <p>Commercial platforms, and a thumbs up or down in every email.</p>
+</section>
+
+</main>
+<div class="next"><a href="index.html">All projects</a><a href="research-agent.html">Next: Research email agent</a></div>
+</div>
+<footer><div class="wrap"><span>© 2026 Yashdeep Singh</span><a href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">LinkedIn</a></div></footer>
+</body></html>

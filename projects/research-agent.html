@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Research email agent</title>
+<meta name="description" content="An AI agent that researches named contacts at public water authorities and builds a GDPR-aware outreach list.">
+<link rel="canonical" href="https://yashdeepsingh.com/projects/research-agent.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Yashdeep Singh">
+<meta property="og:title" content="Research email agent"><meta property="og:description" content="An AI agent that researches named contacts at public water authorities and builds a GDPR-aware outreach list."><meta property="og:url" content="https://yashdeepsingh.com/projects/research-agent.html">
+<meta name="twitter:card" content="summary"><meta name="theme-color" content="#E8EEEA">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%2313221F'/><path d='M32 12c9 12 15 20 15 28a15 15 0 0 1-30 0c0-8 6-16 15-28z' fill='%233A82DE'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="bar"><div class="wrap"><a class="home" href="../">Yashdeep Singh</a><nav aria-label="Main"><a href="../about.html">About</a><a href="../projects/index.html" aria-current="page">Projects</a><a href="../now.html">Now</a><a href="../#contact">Contact</a></nav></div></div>
+<div class="wrap">
+<header class="page">
+  <p class="kind">Case study, AI agent for a Berlin water-tech startup</p>
+  <div class="titlewrap"><h1>Research email agent</h1></div>
+  <div class="refl" aria-hidden="true">Research email agent</div>
+  <p class="lede">Finds the right people at public water authorities, checks every contact against its source and prepares the outreach list.</p>
+  <div class="hviz"><svg class="viz" viewBox="0 0 240 150" aria-hidden="true">
+          <g class="v-ink">
+            <path d="M30 70V48l14-10 14 10v22ZM85 70V48l14-10 14 10v22ZM140 70V48l14-10 14 10v22ZM195 70V48l14-10 14 10v22Z"/>
+            <path d="M30 128V106l14-10 14 10v22ZM85 128V106l14-10 14 10v22ZM140 128V106l14-10 14 10v22ZM195 128V106l14-10 14 10v22Z"/>
+          </g>
+          <circle class="anim pin" cx="44" cy="26" r="6" style="fill:var(--water)"/>
+          <circle class="anim pin p2" cx="154" cy="26" r="6" style="fill:var(--water)"/>
+          <circle class="anim pin p3" cx="209" cy="84" r="6" style="fill:var(--water)"/>
+          <circle class="anim pin p4" cx="99" cy="84" r="6" style="fill:var(--water)"/>
+          <g class="scan"><circle class="v-ink" cx="60" cy="56" r="17" style="stroke-width:3"/><path class="v-ink" d="M72 68l12 12" style="stroke-width:4"/></g>
+        </svg></div>
+  <dl class="meta"><div><dt>Role</dt><dd>Built it end to end</dd></div><div><dt>Stack</dt><dd>Claude with web search, Python</dd></div><div><dt>Output</dt><dd>Contact database and PDF</dd></div></dl>
+</header>
+<main id="main">
+
+<section>
+  <h2>The problem</h2>
+  <p>Authorities list a general inbox. The people who decide are hidden in team pages.</p>
+</section>
+<section>
+  <h2>How I built it</h2>
+  <div class="flow">
+    <div><b>Target list</b><span>Start from a list of authorities with their general contact details</span></div>
+    <div><b>Research</b><span>Claude with web search reads each office's team pages and finds the groundwater department</span></div>
+    <div><b>Structure</b><span>Python writes contacts and organisations into a linked database with IDs</span></div>
+    <div><b>Prepare outreach</b><span>Salutations and a shareable PDF list, each contact linked to its source</span></div>
+  </div>
+</section>
+<section>
+  <h2>Testing and what I fixed</h2>
+  <div class="issue"><div><h3>Problem</h3><p>Big batches mixed up names.</p></div><div><h3>Fix</h3><p>Three to four offices at a time, each contact linked to its source.</p></div></div>
+  <div class="issue"><div><h3>Problem</h3><p>GDPR.</p></div><div><h3>Fix</h3><p>Opt-out status built into the database.</p></div></div>
+  
+</section>
+
+<section>
+  <h2>What I would do next</h2>
+  <p>Automatic re-checks every few months.</p>
+</section>
+
+</main>
+<div class="next"><a href="index.html">All projects</a><a href="linkedin-agent.html">Next: LinkedIn agent</a></div>
+</div>
+<footer><div class="wrap"><span>© 2026 Yashdeep Singh</span><a href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">LinkedIn</a></div></footer>
+</body></html>
