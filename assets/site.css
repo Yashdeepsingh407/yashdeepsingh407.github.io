@@ -1,6 +1,6 @@
 /* Shared styles for all subpages. Same tokens as the homepage. */
 :root{
-  --bg:#F3F4F7;--surface:#E9ECF3;--fg:#0E1116;--muted:#5B6270;--line:#DDE1E8;--accent:#2F49F5;--water:#2F49F5;--todo:#B4540F;
+  --bg:#F3EBC9;--surface:#E9DFB6;--fg:#0E1116;--muted:#5A5848;--line:#DDD2A6;--accent:#2F49F5;--water:#2F49F5;--todo:#B4540F;
   --display:"Unbounded","Arial Black",system-ui,sans-serif;--body:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
   --ease:cubic-bezier(.32,.72,0,1)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0D12;--surface:#1A1F2B;--fg:#EEF0F5;--muted:#9AA2B2;--line:#262B36;--accent:#8EA0FF;--water:#6F86FF;--todo:#F0A35E;color-scheme:dark}}
