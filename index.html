@@ -28,124 +28,153 @@
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Yashdeep Singh | AI Agents and Business Development in Berlin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Geist:wght@400;500;600&display=swap">
 <style>
-/* Layout: name on the water, then the motto as a machine you can switch off,
-   projects as animated tiles, career as sediment layers. Pictures first, words second. */
+/* Layout: mobile first. A cobalt hero with the name on the water, then a chat with the
+   "lazy agent", the agents as staff ID badges, the lazy machine, a swipeable story, contact.
+   Thumb nav sits at the bottom on phones and moves to the top on desktop. */
 :root{
-  --bg:#E8EEEA; --surface:#DCE5E0; --fg:#13221F; --muted:#53655E; --line:#C2CFC8;
-  --accent:#1D5BC6; --water:#3A82DE;
-  --s1:#C9A86A; --s2:#9C7B4C; --s3:#6F8A7A; --s4:#3A82DE; --s5:#7B6AA8;
-  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --bg:#F3F4F7; --card:#FFFFFF; --fg:#0E1116; --muted:#5B6270; --line:#DDE1E8; --surface:#E9ECF3;
+  --cobalt:#2F49F5; --water:#2F49F5; --on-cobalt:#F6F7FB; --cobalt-soft:#DCE2FF;
+  --hero-ink:#F6F7FB; --hero-water:#AFC0FF;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
   --body:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --ease:cubic-bezier(.32,.72,0,1);
+  --ease:cubic-bezier(.32,.72,0,1); --r:26px;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#081215; --surface:#0F1D21; --fg:#DCE8E4; --muted:#8EA29B; --line:#22363A;
-  --accent:#86B5FF; --water:#4B93F2;
-  --s1:#B8964F; --s2:#8C6A3C; --s3:#5E7C6C; --s4:#4B93F2; --s5:#8E7DC2; color-scheme:dark}}
+  --bg:#0B0D12; --card:#141821; --fg:#EEF0F5; --muted:#9AA2B2; --line:#262B36; --surface:#1A1F2B;
+  --cobalt:#3651FF; --water:#6F86FF; --cobalt-soft:#1E2550; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#081215; --surface:#0F1D21; --fg:#DCE8E4; --muted:#8EA29B; --line:#22363A;
-  --accent:#86B5FF; --water:#4B93F2;
-  --s1:#B8964F; --s2:#8C6A3C; --s3:#5E7C6C; --s4:#4B93F2; --s5:#8E7DC2; color-scheme:dark}
+  --bg:#0B0D12; --card:#141821; --fg:#EEF0F5; --muted:#9AA2B2; --line:#262B36; --surface:#1A1F2B;
+  --cobalt:#3651FF; --water:#6F86FF; --cobalt-soft:#1E2550; color-scheme:dark}
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:var(--accent);text-underline-offset:3px}
-a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--cobalt);outline-offset:3px;border-radius:6px}
 p{margin:0}
-.muted{color:var(--muted)}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:30;opacity:.06;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
-.skip{position:absolute;left:16px;top:-60px;z-index:40;background:var(--fg);color:var(--bg);padding:10px 14px;border-radius:999px;font-weight:600;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:16px}
+.skip{position:absolute;left:16px;top:-60px;z-index:60;background:var(--fg);color:var(--bg);padding:10px 14px;border-radius:999px;font-weight:600;text-decoration:none}
 .skip:focus{top:16px}
-.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(30px,7.4vw,64px);line-height:1.02;letter-spacing:-.03em;margin:0 0 10px;text-wrap:balance}
+.sub{color:var(--muted);font-size:17px;max-width:44ch;margin-bottom:28px}
+.sec{padding-block:72px;scroll-margin-top:0}
+@media (min-width:900px){.sec,.contact{scroll-margin-top:70px}}
 
-/* Floating nav */
-.nav{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:2px;padding:5px;border-radius:999px;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--fg) 9%,transparent),0 10px 30px -12px color-mix(in srgb,var(--accent) 30%,transparent);max-width:calc(100% - 32px)}
-.nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:7px 14px;border-radius:999px;white-space:nowrap;transition:color .3s var(--ease),background .3s var(--ease)}
-.nav a:hover{color:var(--fg)}
-.nav a.on{color:var(--bg);background:var(--fg)}
-@media (max-width:440px){.nav a{padding:7px 9px;font-size:13px}}
+/* Thumb nav: bottom on phones, top on desktop */
+.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:50;display:flex;align-items:center;gap:2px;padding:6px;border-radius:999px;
+  background:color-mix(in srgb,var(--card) 82%,transparent);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--fg) 8%,transparent),0 14px 34px -14px color-mix(in srgb,var(--cobalt) 45%,transparent);max-width:calc(100% - 24px)}
+.dock a,.dock button{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:58px;padding:7px 10px;border-radius:999px;border:0;background:transparent;color:var(--muted);text-decoration:none;font:inherit;font-size:11px;font-weight:600;cursor:pointer;transition:color .25s var(--ease),background .25s var(--ease)}
+.dock svg{width:20px;height:20px}
+.dock a.on{color:var(--on-cobalt);background:var(--cobalt)}
+.dock button[aria-pressed="true"]{color:var(--cobalt)}
+.dock .sep{width:1px;height:28px;background:var(--line);margin:0 4px}
+@media (min-width:900px){
+  body{padding-bottom:0}
+  .dock{top:16px;bottom:auto}
+  .dock a,.dock button{flex-direction:row;gap:8px;font-size:14px;padding:9px 16px}
+  .dock svg{width:17px;height:17px}
+}
 
-/* Hero: name on the waterline */
-.hero{position:relative;overflow:hidden;background:radial-gradient(120% 80% at 85% 110%,color-mix(in srgb,var(--water) 16%,transparent),transparent 60%)}
-.hero-inner{position:relative;max-width:1180px;margin:0 auto;padding:clamp(104px,11vw,140px) 20px 0}
-.intro{font-size:clamp(16px,1.6vw,18px);color:var(--muted);margin:0 0 18px}
+/* Hero: cobalt slab, name on the water */
+.hero{position:relative;overflow:hidden;background:var(--cobalt);color:var(--on-cobalt);border-radius:0 0 34px 34px;
+  background-image:radial-gradient(90% 70% at 100% 0%,color-mix(in srgb,#fff 16%,transparent),transparent 60%),radial-gradient(70% 60% at 0% 100%,color-mix(in srgb,#000 22%,transparent),transparent 70%)}
+.hero-inner{position:relative;max-width:1160px;margin:0 auto;padding:clamp(56px,10vw,150px) 16px 0}
+.intro{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:600;padding:7px 14px 7px 8px;border-radius:999px;background:color-mix(in srgb,#fff 14%,transparent);margin:0 0 26px}
+.intro i{width:22px;height:22px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.intro i::before{content:"";width:8px;height:8px;border-radius:50%;background:#2ECC71;box-shadow:0 0 0 0 #2ECC71;animation:live 2.4s infinite}
+@keyframes live{0%{box-shadow:0 0 0 0 rgba(46,204,113,.6)}70%{box-shadow:0 0 0 8px rgba(46,204,113,0)}100%{box-shadow:0 0 0 0 rgba(46,204,113,0)}}
 h1.cut{-webkit-mask-image:linear-gradient(#000 var(--cut),transparent var(--cut));mask-image:linear-gradient(#000 var(--cut),transparent var(--cut))}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(42px,10.4vw,150px);line-height:1;letter-spacing:-.04em;margin:0;white-space:nowrap;position:relative;z-index:2}
+h1{font-family:var(--display);font-weight:800;font-size:min(8.2vw,124px);line-height:1;letter-spacing:-.05em;margin:0;white-space:nowrap;position:relative;z-index:2}
 #water{display:block;width:100%;position:absolute;left:0;z-index:1;pointer-events:none}
-.below{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end;padding-bottom:64px}
-.lede{font-size:clamp(20px,2.2vw,26px);line-height:1.35;margin:0;max-width:24ch;font-weight:500}
-.ctas{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;justify-self:end}
-.pill{display:inline-flex;align-items:center;gap:12px;padding:7px 7px 7px 20px;border-radius:999px;background:var(--fg);color:var(--bg);font-weight:600;font-size:15px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;transition:transform .5s var(--ease),background .4s var(--ease)}
-.pill .ic{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--bg) 16%,transparent);transition:transform .5s var(--ease)}
-.pill .ic svg{width:15px;height:15px}
-.pill:hover{background:var(--accent)}
-.pill:hover .ic{transform:translate(3px,-1px) scale(1.06)}
-.pill:active{transform:scale(.98)}
-.tlink{color:var(--fg);font-weight:600;font-size:15px;text-decoration:none;border-bottom:1.5px solid var(--line);padding-bottom:2px;transition:border-color .3s var(--ease)}
-.tlink:hover{border-color:var(--accent)}
+.below{position:relative;z-index:2;display:grid;gap:24px;padding-bottom:40px}
+.lede{font-size:clamp(20px,5vw,28px);line-height:1.25;font-weight:500;max-width:22ch;letter-spacing:-.01em}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 22px;border-radius:999px;font:inherit;font-weight:600;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:transform .4s var(--ease),background .3s var(--ease),color .3s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:18px;height:18px}
+.btn.white{background:#fff;color:#0E1116}
+.btn.white:hover{background:#E6EAFF}
+.btn.ghost{background:color-mix(in srgb,#fff 14%,transparent);color:#fff}
+.btn.ghost:hover{background:color-mix(in srgb,#fff 24%,transparent)}
+.btn.ink{background:var(--fg);color:var(--bg)}
+.btn.ink:hover{background:var(--cobalt);color:#fff}
+.hero-foot{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:8px;padding-bottom:30px}
+.hero-foot span{font-size:13px;font-weight:500;padding:6px 12px;border-radius:999px;border:1px solid color-mix(in srgb,#fff 28%,transparent)}
+@media (min-width:900px){
+  .below{grid-template-columns:minmax(0,1fr) auto;align-items:end;padding-bottom:48px}
+  .hero-inner{padding-top:150px}
+}
 
-/* Sections */
-.sec{padding-block:96px}
-.sec+.sec{border-top:1px solid var(--line)}
-h2{font-family:var(--display);font-weight:800;font-size:clamp(38px,6vw,76px);line-height:.98;letter-spacing:-.04em;margin:0 0 36px;text-wrap:balance}
+/* Chat with the lazy agent */
+.chat{background:var(--card);border-radius:var(--r);box-shadow:0 0 0 1px var(--line),0 30px 60px -40px color-mix(in srgb,var(--cobalt) 55%,transparent);overflow:hidden;max-width:760px}
+.chat-head{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.ava{width:40px;height:40px;border-radius:14px;background:var(--cobalt);display:grid;place-items:center;flex:none}
+.ava svg{width:24px;height:24px}
+.chat-head b{display:block;font-size:15px}
+.chat-head small{color:var(--muted);font-size:13px}
+.chat-head small::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#2ECC71;margin-right:6px;vertical-align:1px}
+.log{padding:18px 16px 8px;display:flex;flex-direction:column;gap:10px;max-height:min(62vh,560px);overflow-y:auto;scroll-behavior:smooth;overscroll-behavior:contain}
+.msg{max-width:86%;padding:11px 15px;border-radius:20px;font-size:16px;line-height:1.45;animation:msg .45s var(--ease) both}
+.msg.bot{background:var(--surface);border-bottom-left-radius:6px;align-self:flex-start}
+.msg.me{background:var(--cobalt);color:#fff;border-bottom-right-radius:6px;align-self:flex-end}
+.msg a{color:var(--cobalt);font-weight:600}
+.msg.quote{font-family:var(--display);font-weight:700;font-size:18px;line-height:1.3;letter-spacing:-.02em;background:var(--cobalt-soft)}
+.msg.quote small{display:block;font-family:var(--body);font-weight:500;font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:0}
+@keyframes msg{from{opacity:0;transform:translateY(8px) scale(.98)}}
+.typing{display:inline-flex;gap:4px;padding:14px 16px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:dot 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,60%,100%{opacity:.25;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+.mini{display:grid;gap:8px;margin-top:10px}
+.mini a{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:14px;background:var(--card);text-decoration:none;color:var(--fg);font-weight:600;font-size:15px}
+.mini a span{color:var(--muted);font-weight:400}
+.chips{display:flex;gap:8px;padding:10px 16px 16px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font:inherit;font-size:15px;font-weight:600;padding:10px 15px;border-radius:999px;border:1.5px solid var(--cobalt);background:transparent;color:var(--cobalt);cursor:pointer;transition:background .25s var(--ease),color .25s var(--ease)}
+.chip:hover{background:var(--cobalt);color:#fff}
+.chip:disabled{opacity:.4;cursor:default}
+.chat-note{font-size:13px;color:var(--muted);margin-top:12px}
 
-/* The lazy machine */
-.motto{font-family:var(--display);font-weight:600;font-size:clamp(24px,3.3vw,40px);line-height:1.12;letter-spacing:-.025em;max-width:26ch;margin:0 0 10px;text-wrap:balance}
-.motto::before{content:"\201C"}.motto::after{content:"\201D"}
-.who{color:var(--muted);font-size:15px;margin-bottom:34px}
-.lazy{position:relative;background:var(--fg);color:var(--bg);border-radius:28px;overflow:hidden;box-shadow:0 30px 60px -36px color-mix(in srgb,var(--accent) 60%,transparent)}
-.lazy canvas{display:block;width:100%;height:340px}
-.lazy-top{position:absolute;left:24px;right:24px;top:20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;z-index:2}
-.lazy-title{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em}
-.toggle{display:flex;padding:4px;border-radius:999px;background:color-mix(in srgb,var(--bg) 12%,transparent)}
-.toggle button{font:inherit;font-size:14px;font-weight:600;border:0;background:transparent;color:color-mix(in srgb,var(--bg) 70%,transparent);padding:7px 14px;border-radius:999px;cursor:pointer;transition:background .3s var(--ease),color .3s var(--ease)}
-.toggle button[aria-pressed="true"]{background:var(--bg);color:var(--fg)}
-.lazy-bottom{position:absolute;left:24px;bottom:18px;display:flex;gap:36px;z-index:2}
-.count b{display:block;font-family:var(--display);font-weight:800;font-size:40px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.count span{font-size:13px;color:color-mix(in srgb,var(--bg) 65%,transparent)}
-.count.agents b{color:var(--water)}
-.hammock{position:absolute;right:26px;top:96px;width:190px;height:auto;color:var(--bg);z-index:1}
-.hammock .swing{transform-origin:100px 40px;animation:swing 4s ease-in-out infinite}
-@keyframes swing{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
-.hammock .zz text{font-family:var(--display);font-weight:800;fill:var(--water);animation:zz 3s ease-in infinite;opacity:0}
-.hammock .zz text:nth-child(2){animation-delay:1s}.hammock .zz text:nth-child(3){animation-delay:2s}
-@keyframes zz{0%{opacity:0;transform:translate(0,0)}20%{opacity:1}100%{opacity:0;transform:translate(14px,-26px)}}
-.hammock .person,.hammock .zz{transition:opacity .5s var(--ease)}
-.lazy.manual .hammock .person,.lazy.manual .hammock .zz{opacity:0}
-.lazy-note{color:var(--muted);font-size:15px;margin-top:14px}
+/* Agents as staff ID badges */
+.deck{display:grid;grid-auto-flow:column;grid-auto-columns:min(82%,330px);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 16px 22px;margin-inline:-16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.deck::-webkit-scrollbar{display:none}
+@media (min-width:900px){.deck{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;margin:0;padding:0}}
+@media (min-width:1120px){.deck{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.tile{position:relative;scroll-snap-align:start;display:flex;flex-direction:column;border-radius:var(--r);background:var(--card);color:var(--fg);text-decoration:none;overflow:hidden;
+  box-shadow:0 0 0 1px var(--line);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.tile:hover{transform:translateY(-4px) rotate(-.4deg);box-shadow:0 0 0 1px var(--line),0 26px 44px -30px color-mix(in srgb,var(--cobalt) 70%,transparent)}
+.tile .clip{position:absolute;top:-6px;left:50%;width:54px;height:16px;margin-left:-27px;border-radius:0 0 10px 10px;background:var(--line)}
+.tile .top{display:flex;justify-content:space-between;align-items:center;padding:20px 18px 0;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--muted)}
+.tile .top b{color:var(--cobalt);letter-spacing:.02em}
+.tile .photo{margin:14px 18px 0;border-radius:18px;background:var(--surface);aspect-ratio:16/10;display:grid;place-items:center;overflow:hidden;padding:12px;color:var(--fg)}
+.tile.blue .photo{background:var(--cobalt);color:#fff}
+.tile.blue .photo .v-paper{fill:var(--cobalt)}
+.tile .photo svg.viz{width:100%;height:100%;overflow:visible}
+.tile .info{padding:16px 18px 18px;display:grid;gap:12px}
+.tile h3{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.02em;margin:0;line-height:1.15}
+.tile .what{font-size:15px;color:var(--muted);line-height:1.4}
+.tile dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0;padding-top:12px;border-top:1px dashed var(--line)}
+.tile dt{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.04em}
+.tile dd{margin:2px 0 0;font-size:14px;font-weight:600}
+.tile .bar{height:26px;margin:0 18px 18px;border-radius:6px;background:repeating-linear-gradient(90deg,var(--fg) 0 2px,transparent 2px 4px,var(--fg) 4px 7px,transparent 7px 9px,var(--fg) 9px 10px,transparent 10px 13px);opacity:.75}
+.swipe{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-top:-6px}
+@media (min-width:900px){.swipe{display:none}}
 
-/* Project tiles */
-.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
-.tile{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-height:300px;padding:22px;border-radius:24px;background:var(--surface);color:var(--fg);text-decoration:none;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
-.tile:hover{transform:translateY(-4px);box-shadow:0 24px 40px -28px color-mix(in srgb,var(--accent) 55%,transparent)}
-.tile:active{transform:translateY(-1px)}
-.tile.w4{grid-column:span 4}.tile.w3{grid-column:span 3}.tile.w2{grid-column:span 2}
-.tile.dark{background:var(--fg);color:var(--bg)}
-.tile.wet{background:color-mix(in srgb,var(--water) 18%,var(--surface))}
-.tile svg.viz{width:100%;height:auto;max-height:190px;display:block;color:currentColor;overflow:visible}
-.tile h3{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.03em;line-height:1;margin:0 0 6px}
-.tile p{font-size:15px;line-height:1.4;opacity:.75;max-width:34ch}
-.tile .stat{position:absolute;top:18px;right:18px;font-family:var(--display);font-weight:800;font-size:14px;padding:5px 11px;border-radius:999px;background:var(--water);color:#fff}
-.tile .arrow{position:absolute;right:20px;bottom:20px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,currentColor 10%,transparent);transition:transform .5s var(--ease)}
-.tile .arrow svg{width:16px;height:16px}
-.tile:hover .arrow{transform:translate(3px,-3px)}
-.all{margin-top:22px}
-
-/* Tile animations. All loop gently; reduced motion freezes them. */
+/* SVG pieces shared by badges and case studies */
 .viz text{font-family:var(--body)}
 .viz text.disp{font-family:var(--display)}
 .v-ink{stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .v-fill{fill:currentColor}
-.v-paper{fill:var(--bg);stroke:currentColor;stroke-width:2}
-.tile.dark .v-paper{fill:var(--fg)}
+.v-paper{fill:var(--surface);stroke:currentColor;stroke-width:2}
 .v-water{fill:var(--water)}
+.tile.blue .v-water{fill:#fff}
 .v-wline{stroke:var(--water);fill:none;stroke-width:2.5;stroke-linecap:round}
 .anim{transform-box:fill-box;transform-origin:center}
 .fall{animation:fall 3.6s cubic-bezier(.5,0,.6,1) infinite;opacity:0}
-.fall.f2{animation-delay:1.2s}.fall.f3{animation-delay:2.4s}
+.fall.f3{animation-delay:2.4s}
 @keyframes fall{0%{transform:translateY(-70px);opacity:0}12%{opacity:1}55%{transform:translateY(30px);opacity:1}72%{transform:translateY(62px) scale(.4);opacity:0}100%{opacity:0}}
 .reject{animation:reject 3.6s cubic-bezier(.5,0,.6,1) infinite;animation-delay:1.2s;opacity:0}
 @keyframes reject{0%{transform:translate(0,-70px);opacity:0}12%{opacity:1}40%{transform:translate(0,12px) rotate(0)}70%{transform:translate(90px,30px) rotate(40deg);opacity:0}100%{opacity:0}}
@@ -174,63 +203,65 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(38px,6vw,76px);lin
 .ring.r2{animation-delay:.25s}
 @keyframes ring{0%,60%{transform:scale(.2);opacity:0}64%{opacity:.9}100%{transform:scale(1.6);opacity:0}}
 
-/* Career: sediment layers + one detail card */
-.strata-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.strata{min-width:660px;width:100%;display:block}
-.band{cursor:pointer;transition:opacity .25s}
-.strata.hot .band{opacity:.4}
-.strata .band.sel,.strata .band:hover,.strata .band:focus{opacity:1}
-.band text{font-family:var(--display);font-weight:600;font-size:13px;fill:var(--fg)}
-.yr{fill:var(--muted);font-size:12px;font-family:var(--body)}
-.now{stroke:var(--water);stroke-width:1.5;stroke-dasharray:3 4}
-.detail{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:center;margin-top:18px;padding:18px 20px;border-radius:18px;background:var(--surface);min-height:92px}
-.detail .sw{width:46px;height:46px;border-radius:12px}
-.detail h3{font-family:var(--display);font-weight:600;font-size:20px;margin:0;line-height:1.2}
-.detail p{color:var(--muted);font-size:15px;margin-top:2px}
+/* The lazy machine */
+.lazy{position:relative;background:var(--fg);color:var(--bg);border-radius:var(--r);overflow:hidden}
+.lazy canvas{display:block;width:100%;height:420px}
+.lazy-top{position:absolute;left:16px;right:16px;top:16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;z-index:2}
+.lazy-title{font-family:var(--display);font-weight:700;font-size:15px}
+.toggle{display:flex;padding:4px;border-radius:999px;background:color-mix(in srgb,var(--bg) 14%,transparent)}
+.toggle button{font:inherit;font-size:14px;font-weight:600;border:0;background:transparent;color:color-mix(in srgb,var(--bg) 70%,transparent);min-height:38px;padding:0 14px;border-radius:999px;cursor:pointer;transition:background .3s var(--ease),color .3s var(--ease)}
+.toggle button[aria-pressed="true"]{background:var(--cobalt);color:#fff}
+.lazy-bottom{position:absolute;left:16px;bottom:16px;display:flex;gap:28px;z-index:2}
+.count b{display:block;font-family:var(--display);font-weight:800;font-size:34px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.count span{font-size:13px;color:color-mix(in srgb,var(--bg) 65%,transparent)}
+.count.agents b{color:var(--water)}
+.hammock{position:absolute;right:12px;top:68px;width:130px;height:auto;color:var(--bg);z-index:1}
+.hammock .swing{transform-origin:100px 40px;animation:swing 4s ease-in-out infinite}
+@keyframes swing{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+.hammock .zz text{font-family:var(--display);font-weight:800;fill:var(--water);animation:zz 3s ease-in infinite;opacity:0}
+.hammock .zz text:nth-child(2){animation-delay:1s}.hammock .zz text:nth-child(3){animation-delay:2s}
+@keyframes zz{0%{opacity:0;transform:translate(0,0)}20%{opacity:1}100%{opacity:0;transform:translate(14px,-26px)}}
+.hammock .person,.hammock .zz{transition:opacity .5s var(--ease)}
+.lazy.manual .hammock .person,.lazy.manual .hammock .zz{opacity:0}
+@media (min-width:700px){.lazy canvas{height:360px}.hammock{width:190px;top:96px;right:26px}.lazy-top{left:24px;right:24px;top:20px}.lazy-bottom{left:24px;bottom:20px}}
 
-/* Small facts */
-.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:56px}
-.fact{padding:20px;border-radius:20px;background:var(--surface)}
-.fact b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(30px,3.4vw,44px);line-height:1;letter-spacing:-.03em}
+/* Story: swipeable year cards */
+.story{display:grid;grid-auto-flow:column;grid-auto-columns:min(72%,260px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 16px 22px;margin-inline:-16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.story::-webkit-scrollbar{display:none}
+.yr{scroll-snap-align:start;border-radius:22px;padding:18px;background:var(--card);box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;justify-content:space-between;min-height:220px;gap:20px}
+.yr b{font-family:var(--display);font-weight:800;font-size:44px;letter-spacing:-.04em;line-height:1;color:var(--cobalt)}
+.yr h3{font-size:18px;margin:0 0 4px;font-weight:600}
+.yr p{font-size:15px;color:var(--muted);line-height:1.4}
+.yr.now{background:var(--cobalt);color:#fff;box-shadow:none}
+.yr.now b{color:#fff}.yr.now p{color:color-mix(in srgb,#fff 78%,transparent)}
+@media (min-width:900px){.story{grid-auto-columns:minmax(0,1fr);overflow:visible;margin:0;padding:0}}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:24px}
+.fact{padding:16px;border-radius:20px;background:var(--surface)}
+.fact b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(24px,6vw,36px);line-height:1;letter-spacing:-.03em}
 .fact span{font-size:14px;color:var(--muted)}
-.fact:first-child b{color:var(--water)}
-.creds{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding:0;list-style:none}
-.creds li{border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:14px}
+.fact.c2 b{color:var(--cobalt)}
+@media (min-width:900px){.facts{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* Side quests */
+.quests{display:grid;gap:12px}
+@media (min-width:900px){.quests{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.quest{display:grid;grid-template-columns:124px minmax(0,1fr);gap:16px;align-items:center;padding:14px;border-radius:22px;background:var(--card);box-shadow:0 0 0 1px var(--line);text-decoration:none;color:var(--fg);transition:transform .4s var(--ease)}
+.quest:hover{transform:translateY(-3px)}
+.quest .pic{aspect-ratio:4/3;border-radius:16px;background:var(--surface);display:grid;place-items:center;padding:6px;overflow:hidden}
+.quest .pic svg{width:100%;height:100%}
+.quest h3{font-family:var(--display);font-weight:700;font-size:17px;margin:0 0 4px;letter-spacing:-.02em}
+.quest p{font-size:14px;color:var(--muted);line-height:1.35}
 
 /* Contact */
-.contact h2{font-size:clamp(56px,11vw,150px);margin-bottom:28px}
-.contact .row{display:flex;flex-wrap:wrap;gap:16px 26px;align-items:center}
-footer{max-width:1180px;margin:0 auto;padding:26px 20px 96px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.contact{background:var(--cobalt);color:#fff;border-radius:34px 34px 0 0;padding-block:72px 96px;margin-top:20px}
+.contact h2{font-size:clamp(46px,13vw,150px);letter-spacing:-.05em;margin-bottom:22px}
+.contact p{font-size:18px;max-width:34ch;margin-bottom:26px;color:color-mix(in srgb,#fff 85%,transparent)}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:56px;font-size:13px;color:color-mix(in srgb,#fff 70%,transparent)}
 
-/* Sound toggle */
-.sound{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:10;display:flex;align-items:center;gap:8px;font:inherit;font-size:14px;font-weight:600;padding:10px 15px;border-radius:999px;border:0;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--fg);cursor:pointer;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--fg) 10%,transparent),0 10px 30px -12px color-mix(in srgb,var(--accent) 35%,transparent);transition:transform .4s var(--ease)}
-.sound:active{transform:scale(.97)}
-.sound svg{width:18px;height:18px}
-.sound .wv{opacity:.25;transition:opacity .2s}
-.sound[aria-pressed="true"] .wv{opacity:1}
-.sound[aria-pressed="true"]{box-shadow:inset 0 0 0 1.5px var(--water),0 10px 30px -12px color-mix(in srgb,var(--accent) 45%,transparent)}
+/* Reveal */
+.rv{transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.pre{opacity:0;transform:translateY(24px)}
 
-/* Scroll reveal (only below-the-fold elements start hidden) */
-.rv{transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.rv.pre{opacity:0;transform:translateY(28px)}
-
-@media (max-width:900px){
-  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .tile.w4{grid-column:span 2}.tile.w3,.tile.w2{grid-column:span 1}
-  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .below{grid-template-columns:minmax(0,1fr)}
-  .ctas{justify-self:start}
-  .sec{padding-block:72px}
-}
-@media (max-width:640px){
-  .bento{grid-template-columns:minmax(0,1fr)}
-  .tile.w4,.tile.w3,.tile.w2{grid-column:span 1}
-  .tile{min-height:260px}
-  .lazy canvas{height:400px}
-  .hammock{width:120px;top:70px;right:10px}
-  .lazy-bottom{gap:24px}
-  .count b{font-size:32px}
-}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
   .fall,.reject,.pop,.pin,.order,.coin,.b1,.b2,.b3{opacity:1}
@@ -242,43 +273,138 @@ m:none}
 }
 </style>
 
-<a class="skip" href="#lazy-sec">Skip to content</a>
-<nav class="nav" aria-label="Sections">
-  <a href="about.html">About</a>
-  <a href="#projects" data-sec="projects">Projects</a>
-  <a href="#experience" data-sec="experience">Work</a>
-  <a href="now.html">Now</a>
-  <a href="#contact" data-sec="contact">Contact</a>
-</nav>
+<a class="skip" href="#chat">Skip to content</a>
 
-<button class="sound" id="soundBtn" type="button" aria-pressed="false" aria-label="Toggle sound effects">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path class="wv" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>
-  <span id="soundLbl">Sound off</span>
-</button>
+<nav class="dock" aria-label="Sections">
+  <a href="#chat" data-sec="chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Ask</a>
+  <a href="#agents" data-sec="agents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="12" rx="4"/><path d="M12 7V4M9 12h.01M15 12h.01M9 16h6"/></svg>Agents</a>
+  <a href="#story" data-sec="story"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2zM8 8h6"/></svg>Story</a>
+  <a href="#contact" data-sec="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg>Contact</a>
+  <span class="sep" aria-hidden="true"></span>
+  <button type="button" id="soundBtn" aria-pressed="false" aria-label="Sound effects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="wv" d="M16.5 8.5a5 5 0 0 1 0 7"/></svg><span id="soundLbl">Sound</span></button>
+</nav>
 
 <header class="hero" id="hero">
   <div class="hero-inner" id="heroInner">
-    <p class="intro">Professionally lazy, on purpose</p>
+    <p class="intro"><i aria-hidden="true"></i>Professionally lazy, on purpose</p>
     <h1 id="name">Yashdeep Singh</h1>
     <canvas id="water" aria-hidden="true"></canvas>
     <div class="spacer" id="spacer"></div>
     <div class="below">
       <p class="lede">If I have to do it twice, I build an agent for it.</p>
       <div class="ctas">
-        <a class="pill" href="#projects">See what I built<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span></a>
-        <a class="tlink" href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn white" href="#chat">Ask my agent<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
+    <div class="hero-foot"><span>Hydro-Berlin</span><span>BHT Berlin</span><span>HTW Machine Economy Lab</span><span>Berlin</span></div>
   </div>
 </header>
 
 <main>
-<section class="sec" id="lazy-sec">
+<section class="sec" id="chat">
   <div class="wrap">
-    <p class="motto">I choose a lazy person to do a hard job, because a lazy person will find an easy way to do it.</p>
-    <p class="who">Often attributed to Bill Gates. My operating system.</p>
+    <h2>Ask my lazy agent</h2>
+    <p class="sub">I'm busy not repeating myself. My agent answers for me.</p>
+    <div class="chat rv">
+      <div class="chat-head">
+        <span class="ava" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="5" fill="#fff"/><circle cx="9" cy="12.5" r="1.8" fill="#2F49F5"/><circle cx="15" cy="12.5" r="1.8" fill="#2F49F5"/><path d="M12 6V3" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <div><b>Yash's agent</b><small>Online, unlike Yash</small></div>
+      </div>
+      <div class="log" id="log" aria-live="polite">
+        <div class="msg bot">Hi, I'm Yash's agent. He built me so he doesn't have to answer the same questions twice. Pick one below.</div>
+      </div>
+      <div class="chips" id="chips">
+        <button class="chip" type="button" data-q="who">Who is Yash?</button>
+        <button class="chip" type="button" data-q="lazy">Why "lazy"?</button>
+        <button class="chip" type="button" data-q="built">What did he build?</button>
+        <button class="chip" type="button" data-q="hire">Can I work with him?</button>
+        <button class="chip" type="button" data-q="real">Are you a real AI?</button>
+      </div>
+    </div>
+    <p class="chat-note">Answers are pre-written. Even the agent is lazy.</p>
+  </div>
+</section>
+
+<section class="sec" id="agents" style="padding-top:24px">
+  <div class="wrap">
+    <h2>Meet the team</h2>
+    <p class="sub">They work the shifts. I take the credit.</p>
+    <div class="deck">
+      <a class="tile blue" href="projects/tender-agent.html">
+        <span class="clip" aria-hidden="true"></span>
+        <div class="top"><span>AGENT</span><b>#01</b></div>
+        <div class="photo"><svg class="viz" viewBox="0 0 360 180" aria-hidden="true">
+          <path class="v-ink" d="M110 74H250L206 122V156H154V122Z"/>
+          <g class="anim fall"><rect class="v-paper" x="164" y="18" width="32" height="40" rx="4"/><path class="v-ink" d="M171 30h18M171 38h18M171 46h11"/></g>
+          <g class="anim reject"><rect class="v-paper" x="164" y="18" width="32" height="40" rx="4"/><path class="v-ink" d="M171 30h18M171 38h18M171 46h11"/></g>
+          <g class="anim fall f3"><rect class="v-paper" x="164" y="18" width="32" height="40" rx="4"/><path class="v-ink" d="M171 30h18M171 38h18M171 46h11"/></g>
+          <g class="anim pop"><circle class="v-water" cx="180" cy="166" r="11"/><path d="M175 166l4 4 7-8" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <g class="anim pop" style="animation-delay:2.4s"><circle class="v-water" cx="180" cy="166" r="11"/><path d="M175 166l4 4 7-8" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+          <path class="v-wline" d="M20 166c20-8 40 8 60 0s40 8 60 0M220 166c20-8 40 8 60 0s40 8 60 0" opacity=".5"/>
+        </svg></div>
+        <div class="info"><div><h3>Tender agent</h3><p class="what">Reads every public tender. Emails only the ones that fit.</p></div>
+          <dl><div><dt>SHIFT</dt><dd>Daily 07:00</dd></div><div><dt>COSTS</dt><dd>0 €</dd></div><div><dt>STATUS</dt><dd>Working</dd></div></dl></div>
+        <span class="bar" aria-hidden="true"></span>
+      </a>
+      <a class="tile" href="projects/research-agent.html">
+        <span class="clip" aria-hidden="true"></span>
+        <div class="top"><span>AGENT</span><b>#02</b></div>
+        <div class="photo"><svg class="viz" viewBox="0 0 240 150" aria-hidden="true">
+          <g class="v-ink">
+            <path d="M30 70V48l14-10 14 10v22ZM85 70V48l14-10 14 10v22ZM140 70V48l14-10 14 10v22ZM195 70V48l14-10 14 10v22Z"/>
+            <path d="M30 128V106l14-10 14 10v22ZM85 128V106l14-10 14 10v22ZM140 128V106l14-10 14 10v22ZM195 128V106l14-10 14 10v22Z"/>
+          </g>
+          <circle class="anim pin" cx="44" cy="26" r="6" style="fill:var(--water)"/>
+          <circle class="anim pin p2" cx="154" cy="26" r="6" style="fill:var(--water)"/>
+          <circle class="anim pin p3" cx="209" cy="84" r="6" style="fill:var(--water)"/>
+          <circle class="anim pin p4" cx="99" cy="84" r="6" style="fill:var(--water)"/>
+          <g class="scan"><circle class="v-ink" cx="60" cy="56" r="17" style="stroke-width:3"/><path class="v-ink" d="M72 68l12 12" style="stroke-width:4"/></g>
+        </svg></div>
+        <div class="info"><div><h3>Research agent</h3><p class="what">Finds the right person at every water authority.</p></div>
+          <dl><div><dt>SHIFT</dt><dd>On call</dd></div><div><dt>SINCE</dt><dd>2026</dd></div><div><dt>STATUS</dt><dd>Working</dd></div></dl></div>
+        <span class="bar" aria-hidden="true"></span>
+      </a>
+      <a class="tile" href="projects/linkedin-agent.html">
+        <span class="clip" aria-hidden="true"></span>
+        <div class="top"><span>AGENT</span><b>#03</b></div>
+        <div class="photo"><svg class="viz" viewBox="0 0 240 150" aria-hidden="true">
+          <defs><clipPath id="feedclip"><rect x="20" y="8" width="200" height="134" rx="12"/></clipPath></defs>
+          <g clip-path="url(#feedclip)"><g class="feed">
+            <g><rect class="v-paper" x="40" y="14" width="160" height="48" rx="9"/><circle class="v-fill" cx="58" cy="32" r="8"/><path class="v-ink" d="M72 30h60M72 40h96M50 52h40"/><circle class="v-water" cx="186" cy="50" r="5"/></g>
+            <g><rect class="v-paper" x="40" y="72" width="160" height="48" rx="9"/><circle class="v-fill" cx="58" cy="90" r="8"/><path class="v-ink" d="M72 88h70M72 98h80M50 110h50"/><circle class="v-water" cx="186" cy="108" r="5"/></g>
+            <g><rect class="v-paper" x="40" y="130" width="160" height="48" rx="9"/><circle class="v-fill" cx="58" cy="148" r="8"/><path class="v-ink" d="M72 146h50M72 156h96M50 168h36"/><circle class="v-water" cx="186" cy="166" r="5"/></g>
+            <g><rect class="v-paper" x="40" y="188" width="160" height="48" rx="9"/><circle class="v-fill" cx="58" cy="206" r="8"/><path class="v-ink" d="M72 204h60M72 214h96M50 226h40"/><circle class="v-water" cx="186" cy="224" r="5"/></g>
+          </g></g>
+        </svg></div>
+        <div class="info"><div><h3>LinkedIn agent</h3><p class="what">Keeps a startup posting.</p></div>
+          <dl><div><dt>SHIFT</dt><dd>On call</dd></div><div><dt>SINCE</dt><dd>2026</dd></div><div><dt>STATUS</dt><dd>Working</dd></div></dl></div>
+        <span class="bar" aria-hidden="true"></span>
+      </a>
+      <a class="tile" href="projects/voltfix.html">
+        <span class="clip" aria-hidden="true"></span>
+        <div class="top"><span>BOT</span><b>#04</b></div>
+        <div class="photo"><svg class="viz" viewBox="0 0 240 150" aria-hidden="true">
+          <rect class="v-ink" x="40" y="16" width="48" height="120" rx="10"/>
+          <rect class="v-water drain" x="47" y="23" width="34" height="106" rx="6"/>
+          <path class="v-ink" d="M30 112h68" stroke-dasharray="4 5"/>
+          <g class="order"><rect class="v-paper" x="110" y="56" width="104" height="38" rx="19"/><text x="162" y="80" text-anchor="middle" font-weight="600" font-size="14" fill="currentColor">Reorder</text></g>
+        </svg></div>
+        <div class="info"><div><h3>VoltFix</h3><p class="what">Orders stock before the shelf is empty.</p></div>
+          <dl><div><dt>MADE AT</dt><dd>BHT</dd></div><div><dt>SINCE</dt><dd>2026</dd></div><div><dt>STATUS</dt><dd>Prototype</dd></div></dl></div>
+        <span class="bar" aria-hidden="true"></span>
+      </a>
+    </div>
+    <p class="swipe" aria-hidden="true">Swipe for more <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></p>
+  </div>
+</section>
+
+<section class="sec" id="machine-sec" style="padding-top:24px">
+  <div class="wrap">
+    <h2>Lazy on purpose</h2>
+    <p class="sub">Switch the agents off and see my old weeks.</p>
     <div class="lazy rv" id="lazy">
-      <canvas id="machine" aria-label="Animation: tasks flow through three AI agents while a person rests in a hammock" role="img"></canvas>
+      <canvas id="machine" role="img" aria-label="Animation: tasks flow through three AI agents while a person rests in a hammock"></canvas>
       <div class="lazy-top">
         <span class="lazy-title">The lazy machine</span>
         <div class="toggle" role="group" aria-label="Who does the work">
@@ -301,74 +427,33 @@ m:none}
         <g class="zz"><text x="66" y="44" font-size="13">z</text><text x="74" y="38" font-size="17">z</text><text x="84" y="30" font-size="22">z</text></g>
       </svg>
       <div class="lazy-bottom" aria-live="polite">
-        <div class="count agents"><b id="cntA">0</b><span>done by agents</span></div>
-        <div class="count"><b id="cntM">0</b><span>done by me</span></div>
+        <div class="count agents"><b id="cntA">0</b><span>by agents</span></div>
+        <div class="count"><b id="cntM">0</b><span>by me</span></div>
       </div>
     </div>
-    <p class="lazy-note">Press "By hand" to see my weeks before the agents.</p>
   </div>
 </section>
 
-<section class="sec" id="projects">
+<section class="sec" id="story" style="padding-top:24px">
   <div class="wrap">
-    <h2>Things I built so I don't have to repeat myself</h2>
-    <div class="bento">
-
-      <a class="tile w4 dark rv" href="projects/tender-agent.html">
-        <span class="stat">0 € / month</span>
-        <svg class="viz" viewBox="0 0 360 180" aria-hidden="true">
-          <path class="v-ink" d="M110 74H250L206 122V156H154V122Z"/>
-          <g class="anim fall"><rect class="v-paper" x="164" y="18" width="32" height="40" rx="4"/><path class="v-ink" d="M171 30h18M171 38h18M171 46h11"/></g>
-          <g class="anim reject"><rect class="v-paper" x="164" y="18" width="32" height="40" rx="4"/><path class="v-ink" d="M171 30h18M171 38h18M171 46h11"/></g>
-          <g class="anim fall f3"><rect class="v-paper" x="164" y="18" width="32" height="40" rx="4"/><path class="v-ink" d="M171 30h18M171 38h18M171 46h11"/></g>
-          <g class="anim pop"><circle class="v-water" cx="180" cy="166" r="11"/><path d="M175 166l4 4 7-8" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
-          <g class="anim pop" style="animation-delay:2.4s"><circle class="v-water" cx="180" cy="166" r="11"/><path d="M175 166l4 4 7-8" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
-          <path class="v-wline" d="M20 166c20-8 40 8 60 0s40 8 60 0M220 166c20-8 40 8 60 0s40 8 60 0" opacity=".5"/>
-        </svg>
-        <div><h3>Tender agent</h3><p>Reads public tenders every morning. Emails only the ones that fit.</p></div>
-        <span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-      </a>
-
-      <a class="tile w2 rv" href="projects/research-agent.html">
-        <svg class="viz" viewBox="0 0 240 150" aria-hidden="true">
-          <g class="v-ink">
-            <path d="M30 70V48l14-10 14 10v22ZM85 70V48l14-10 14 10v22ZM140 70V48l14-10 14 10v22ZM195 70V48l14-10 14 10v22Z"/>
-            <path d="M30 128V106l14-10 14 10v22ZM85 128V106l14-10 14 10v22ZM140 128V106l14-10 14 10v22ZM195 128V106l14-10 14 10v22Z"/>
-          </g>
-          <circle class="anim pin" cx="44" cy="26" r="6" style="fill:var(--water)"/>
-          <circle class="anim pin p2" cx="154" cy="26" r="6" style="fill:var(--water)"/>
-          <circle class="anim pin p3" cx="209" cy="84" r="6" style="fill:var(--water)"/>
-          <circle class="anim pin p4" cx="99" cy="84" r="6" style="fill:var(--water)"/>
-          <g class="scan"><circle class="v-ink" cx="60" cy="56" r="17" style="stroke-width:3"/><path class="v-ink" d="M72 68l12 12" style="stroke-width:4"/></g>
-        </svg>
-        <div><h3>Research agent</h3><p>Finds the right person at every water authority.</p></div>
-      </a>
-
-      <a class="tile w2 rv" href="projects/linkedin-agent.html">
-        <svg class="viz" viewBox="0 0 240 150" aria-hidden="true">
-          <defs><clipPath id="feedclip"><rect x="20" y="8" width="200" height="134" rx="12"/></clipPath></defs>
-          <g clip-path="url(#feedclip)"><g class="feed">
-            <g><rect class="v-paper" x="40" y="14" width="160" height="48" rx="9"/><circle class="v-fill" cx="58" cy="32" r="8"/><path class="v-ink" d="M72 30h60M72 40h96M50 52h40"/><circle class="v-water" cx="186" cy="50" r="5"/></g>
-            <g><rect class="v-paper" x="40" y="72" width="160" height="48" rx="9"/><circle class="v-fill" cx="58" cy="90" r="8"/><path class="v-ink" d="M72 88h70M72 98h80M50 110h50"/><circle class="v-water" cx="186" cy="108" r="5"/></g>
-            <g><rect class="v-paper" x="40" y="130" width="160" height="48" rx="9"/><circle class="v-fill" cx="58" cy="148" r="8"/><path class="v-ink" d="M72 146h50M72 156h96M50 168h36"/><circle class="v-water" cx="186" cy="166" r="5"/></g>
-            <g><rect class="v-paper" x="40" y="188" width="160" height="48" rx="9"/><circle class="v-fill" cx="58" cy="206" r="8"/><path class="v-ink" d="M72 204h60M72 214h96M50 226h40"/><circle class="v-water" cx="186" cy="224" r="5"/></g>
-          </g></g>
-        </svg>
-        <div><h3>LinkedIn agent</h3><p>Keeps a startup posting.</p></div>
-      </a>
-
-      <a class="tile w2 rv" href="projects/voltfix.html">
-        <svg class="viz" viewBox="0 0 240 150" aria-hidden="true">
-          <rect class="v-ink" x="40" y="16" width="48" height="120" rx="10"/>
-          <rect class="v-water drain" x="47" y="23" width="34" height="106" rx="6"/>
-          <path class="v-ink" d="M30 112h68" stroke-dasharray="4 5"/>
-          <g class="order"><rect class="v-paper" x="110" y="56" width="104" height="38" rx="19"/><text x="162" y="80" text-anchor="middle" font-weight="600" font-size="14" fill="currentColor">Reorder</text></g>
-        </svg>
-        <div><h3>VoltFix</h3><p>Orders stock before the shelf is empty.</p></div>
-      </a>
-
-      <a class="tile w2 wet rv" href="projects/robopay.html">
-        <svg class="viz" viewBox="0 0 240 150" aria-hidden="true">
+    <h2>How I got lazy</h2>
+    <p class="sub">Six years, swipe through.</p>
+    <div class="story">
+      <div class="yr"><b>2020</b><div><h3>Student company</h3><p>My first websites.</p></div></div>
+      <div class="yr"><b>2021</b><div><h3>The family store</h3><p>From the register to the ads and online shop.</p></div></div>
+      <div class="yr"><b>2022</b><div><h3>Jugend forscht</h3><p>Tesla's water use near Berlin. Special Award.</p></div></div>
+      <div class="yr"><b>2023</b><div><h3>BHT Berlin</h3><p>B.Sc. Digital Business, done 2027.</p></div></div>
+      <div class="yr now"><b>2026</b><div><h3>Hydro-Berlin and RoboPay</h3><p>AI agents at work. Robots that pay each other at HTW.</p></div></div>
+    </div>
+    <div class="facts rv">
+      <div class="fact c2"><b>C2</b><span>German</span></div>
+      <div class="fact"><b>Fluent</b><span>English</span></div>
+      <div class="fact"><b>Native</b><span>Hindi, Punjabi</span></div>
+      <div class="fact"><b>2027</b><span>B.Sc., BHT Berlin</span></div>
+    </div>
+    <h2 style="font-size:clamp(24px,5vw,36px);margin-top:56px">Side quests</h2>
+    <div class="quests" style="margin-top:16px">
+      <a class="quest" href="projects/robopay.html"><span class="pic"><svg class="viz" viewBox="0 0 240 150" aria-hidden="true">
           <path class="v-ink" d="M10 128h220"/>
           <rect class="v-ink" x="186" y="66" width="34" height="62"/>
           <g class="roll">
@@ -377,72 +462,37 @@ m:none}
             <circle class="v-paper" cx="33" cy="120" r="6"/><circle class="v-paper" cx="57" cy="120" r="6"/>
           </g>
           <g class="coin"><circle cx="203" cy="44" r="13" style="fill:var(--water)"/><text x="203" y="49" text-anchor="middle" font-weight="700" font-size="14" fill="#fff">€</text></g>
-        </svg>
-        <div><h3>RoboPay</h3><p>Robots that get paid without asking anyone.</p></div>
-      </a>
-
-      <a class="tile w3 rv" href="projects/websites.html">
-        <svg class="viz" viewBox="0 0 300 150" aria-hidden="true">
+        </svg></span><div><h3>RoboPay</h3><p>Robots that get paid without asking anyone.</p></div></a>
+      <a class="quest" href="projects/websites.html"><span class="pic"><svg class="viz" viewBox="0 0 300 150" aria-hidden="true">
           <rect class="v-paper" x="20" y="10" width="260" height="130" rx="12"/>
           <path class="v-ink" d="M20 32h260"/><circle class="v-fill" cx="34" cy="21" r="3"/><circle class="v-fill" cx="44" cy="21" r="3"/><circle class="v-fill" cx="54" cy="21" r="3"/>
           <g class="b1"><rect x="36" y="46" width="150" height="26" rx="13" style="fill:var(--surface)"/><text x="50" y="63" font-size="12" fill="currentColor">Garden work, Tue 10:00?</text></g>
           <g class="b2"><rect x="150" y="80" width="114" height="26" rx="13" style="fill:var(--water)"/><text x="164" y="97" font-size="12" font-weight="600" fill="#fff">Booked, see you</text></g>
           <g class="b3"><rect x="36" y="114" width="70" height="20" rx="10" style="fill:var(--surface)"/><text x="48" y="128" font-size="11" fill="currentColor">Thanks!</text></g>
-        </svg>
-        <div><h3>Websites</h3><p>Booking sites for small businesses. Hosting costs 0 €.</p></div>
-      </a>
-
-      <a class="tile w3 rv" href="about.html">
-        <svg class="viz" viewBox="0 0 300 150" aria-hidden="true">
+        </svg></span><div><h3>Websites</h3><p>Booking sites for small businesses.</p></div></a>
+      <a class="quest" href="about.html"><span class="pic"><svg class="viz" viewBox="0 0 300 150" aria-hidden="true">
           <text x="20" y="96" class="disp" font-weight="800" font-size="64" letter-spacing="-3" fill="currentColor">2022</text>
           <path class="anim drip" d="M232 40c6 9 10 14 10 19a10 10 0 0 1-20 0c0-5 4-10 10-19z" style="fill:var(--water)"/>
           <ellipse class="ring" cx="232" cy="112" rx="26" ry="7" fill="none" style="stroke:var(--water)" stroke-width="2"/>
           <ellipse class="ring r2" cx="232" cy="112" rx="16" ry="4" fill="none" style="stroke:var(--water)" stroke-width="2"/>
           <path class="v-wline" d="M180 112h104" opacity=".35"/>
-        </svg>
-        <div><h3>Jugend forscht</h3><p>Water study on Tesla's Gigafactory. Special Award for Resource Efficiency.</p></div>
-      </a>
-    </div>
-    <p class="all"><a class="tlink" href="projects/index.html">All projects</a></p>
-  </div>
-</section>
-
-<section class="sec" id="experience">
-  <div class="wrap">
-    <h2>Six years, in layers</h2>
-    <div class="strata-wrap rv">
-      <svg class="strata" id="strata" viewBox="0 0 760 236" role="img" aria-label="Roles from 2020 to 2026"></svg>
-    </div>
-    <div class="detail" id="detail" aria-live="polite">
-      <span class="sw" id="dSw"></span>
-      <div><h3 id="dTitle"></h3><p id="dText"></p></div>
-    </div>
-
-    <div class="facts rv">
-      <div class="fact"><b>C2</b><span>German</span></div>
-      <div class="fact"><b>Fluent</b><span>English</span></div>
-      <div class="fact"><b>Native</b><span>Hindi and Punjabi</span></div>
-      <div class="fact"><b>2027</b><span>B.Sc. Digital Business, BHT Berlin</span></div>
-    </div>
-    <ul class="creds">
-      <li>IBM: Cloud Computing, 2026</li>
-      <li>LinkedIn Learning: Generative AI, 2025</li>
-      <li>Abitur, 2023</li>
-    </ul>
-  </div>
-</section>
-
-<section class="sec contact" id="contact">
-  <div class="wrap">
-    <h2>Let's talk.</h2>
-    <div class="row">
-      <a class="pill" href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">Message me on LinkedIn<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
-      <a class="tlink" href="about.html">Read the full story</a>
+        </svg></span><div><h3>Read the full story</h3><p>The motto, how I work, the toolbox.</p></div></a>
     </div>
   </div>
 </section>
 </main>
-<footer><span>© 2026 Yashdeep Singh</span><span>Berlin</span></footer>
+
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let's talk.</h2>
+    <p>Working student roles, research collaborations, websites for small businesses.</p>
+    <div class="ctas">
+      <a class="btn white" href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">Message me on LinkedIn</a>
+      <a class="btn ghost" href="projects/index.html">All projects</a>
+    </div>
+    <div class="foot"><span>© 2026 Yashdeep Singh, Berlin</span><span>Built lazily, by hand once.</span></div>
+  </div>
+</footer>
 <script>
 (function(){
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -472,7 +522,7 @@ m:none}
     soundOn=!soundOn;
     if(soundOn&&!ac){try{ac=new (window.AudioContext||window.webkitAudioContext)()}catch(e){soundOn=false}}
     if(ac&&ac.state==='suspended')ac.resume();
-    btn.setAttribute('aria-pressed',soundOn);lbl.textContent=soundOn?'Sound on':'Sound off';
+    btn.setAttribute('aria-pressed',soundOn);lbl.textContent=soundOn?'Sound on':'Sound';
     sfx.on();
   });
 
@@ -511,7 +561,7 @@ m:none}
       rng.setStart(node,i);rng.setEnd(node,i+1);
       tctx.fillText(txt[i],rng.getBoundingClientRect().left-ir.left,yb);
     }
-    ink=rgb(tok('--fg'));wat=rgb(tok('--water'));
+    ink=rgb(tok('--hero-ink'));wat=rgb(tok('--hero-water'));
     if(gl){upload();h1.style.setProperty('--cut',(waterY-(h1.getBoundingClientRect().top-ir.top))+'px');h1.classList.add('cut')}
   }
 
@@ -581,7 +631,7 @@ void main(){
     c.globalCompositeOperation='destination-in';
     const g=c.createLinearGradient(0,0,0,cv.height);g.addColorStop(0,'rgba(0,0,0,1)');g.addColorStop(.85,'rgba(0,0,0,0)');
     c.fillStyle=g;c.fillRect(0,0,cv.width,cv.height);c.globalCompositeOperation='source-over';
-    c.fillStyle=tok('--water');c.globalAlpha=.5;c.fillRect(0,0,cv.width,Math.max(1,dpr));c.globalAlpha=1;
+    c.fillStyle=tok('--hero-water');c.globalAlpha=.5;c.fillRect(0,0,cv.width,Math.max(1,dpr));c.globalAlpha=1;
   }
 
   const ripArr=new Float32Array(32);
@@ -614,46 +664,6 @@ void main(){
   let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{layout();kick()},120)});
   matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',()=>{layout();kick()});
   new MutationObserver(()=>{layout();kick()}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
-
-
-  /* ---------- Career strata, to scale, with one detail card ---------- */
-  (function(){
-    const svg=document.getElementById('strata'),NS='http://www.w3.org/2000/svg';
-    const dSw=document.getElementById('dSw'),dTitle=document.getElementById('dTitle'),dText=document.getElementById('dText');
-    const X0=20,X1=740,T0=2020,T1=2027,xs=y=>X0+(y-T0)/(T1-T0)*(X1-X0);
-    const roles=[
-      {label:'Fresh media company',a:2020+8/12,b:2023+5/12,c:'--s3',t:'Project coordinator, student company',d:'2020 to 2023. First websites, tutoring, training new members.'},
-      {label:'Family store',a:2021,b:2025+11/12,c:'--s1',t:'Assistant, mode for you',d:'2021 to 2025. Register, sales and the digital side of our store.'},
-      {label:'Sales & Marketing',a:2023+1/12,b:2025+11/12,c:'--s2',t:'Sales and marketing, mode for you',d:'2023 to 2025. Meta ads, videos and the online shop, all self-taught.'},
-      {label:'Hydro-Berlin',a:2026+1/12,b:2026+9/12,c:'--s4',t:'Business Development and Marketing, Hydro-Berlin',d:'Since February 2026. Groundwater startup. Three AI agents and counting.'},
-      {label:'RoboPay',a:2026+5/12,b:2026+9/12,c:'--s5',t:'RoboPay, Machine Economy Lab at HTW Berlin',d:'Since June 2026. Market research for robots that pay each other.'}
-    ];
-    const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e};
-    for(let y=T0;y<=T1;y++){svg.appendChild(el('line',{x1:xs(y),x2:xs(y),y1:8,y2:206,stroke:'var(--line)','stroke-width':1}));const tx=el('text',{x:xs(y),y:226,'text-anchor':y===T0?'start':y===T1?'end':'middle',class:'yr'});tx.textContent=y;svg.appendChild(tx)}
-    const bands=[];
-    function show(i,sound){
-      const r=roles[i];dSw.style.background=`var(${r.c})`;dTitle.textContent=r.t;dText.textContent=r.d;
-      bands.forEach((b,j)=>b.classList.toggle('sel',j===i));svg.classList.add('hot');
-      if(sound)sfx.tick();
-    }
-    roles.forEach((r,i)=>{
-      const y=14+i*38,h=28,xa=xs(r.a),xb=xs(r.b),w=xb-xa;
-      let top=`M${xa},${y+3}`;for(let x=xa;x<=xb;x+=8)top+=` L${Math.min(x,xb)},${y+3+Math.sin(x*.09+i)*2.4}`;
-      const g=el('g',{class:'band',tabindex:0,role:'button','aria-label':r.t});
-      g.appendChild(el('path',{d:top+` L${xb},${y+h} L${xa},${y+h} Z`,style:`fill:var(${r.c})`}));
-      const inside=w>150,tx=el('text',{x:inside?xa+10:xb+8,y:y+h/2+5});tx.textContent=r.label;
-      if(!inside&&xb+8+r.label.length*7.5>X1){tx.setAttribute('x',xa-8);tx.setAttribute('text-anchor','end')}
-      g.appendChild(tx);
-      g.addEventListener('mouseenter',()=>show(i,false));
-      g.addEventListener('click',()=>show(i,true));
-      g.addEventListener('focus',()=>show(i,false));
-      g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(i,true)}});
-      svg.appendChild(g);bands.push(g);
-    });
-    const nx=xs(2026+9/12);svg.appendChild(el('line',{x1:nx,x2:nx,y1:4,y2:206,class:'now'}));
-    const nt=el('text',{x:nx-5,y:12,'text-anchor':'end',class:'yr'});nt.textContent='today';svg.appendChild(nt);
-    show(3,false);
-  })();
 
   /* ---------- The lazy machine ---------- */
   (function(){
@@ -770,17 +780,56 @@ void main(){
     else{visible=true;kick()}
   })();
 
-  /* ---------- Nav highlight ---------- */
+
+  /* ---------- Chat with the lazy agent (pre-written answers) ---------- */
   (function(){
-    const links=[...document.querySelectorAll('.nav a[data-sec]')];
+    const log=document.getElementById('log'),chips=document.getElementById('chips');
+    const A={
+      who:['Yashdeep Singh. Digital Business student at BHT Berlin and business development at Hydro-Berlin, a groundwater startup.','He builds AI agents for anything he would have to do twice.'],
+      lazy:[{quote:'I choose a lazy person to do a hard job, because a lazy person will find an easy way to do it.',by:'Often attributed to Bill Gates'},'Yash took that as a job description.'],
+      built:['The highlights:',{links:[['Tender agent','reads every tender','projects/tender-agent.html'],['Research agent','finds the right contact','projects/research-agent.html'],['VoltFix','reorders stock','projects/voltfix.html'],['RoboPay','robots that pay','projects/robopay.html']]}],
+      hire:['Yes. Working student roles, research collaborations and websites for small businesses.',{html:'Fastest way: <a href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">message him on LinkedIn</a>.'}],
+      real:['No. My answers are pre-written. Yash typed them once so he never has to again.','Peak lazy.']
+    };
+    const wait=ms=>new Promise(r=>setTimeout(r,reduce?0:ms));
+    const scroll=()=>{log.scrollTop=log.scrollHeight};
+    function bubble(cls){const d=document.createElement('div');d.className='msg '+cls;log.appendChild(d);return d}
+    function render(part){
+      const d=bubble('bot');
+      if(typeof part==='string'){d.textContent=part}
+      else if(part.quote){d.classList.add('quote');d.textContent=part.quote;const s=document.createElement('small');s.textContent=part.by;d.appendChild(s)}
+      else if(part.links){const m=document.createElement('div');m.className='mini';part.links.forEach(([t,s,h])=>{const a=document.createElement('a');a.href=h;a.textContent=t;const sp=document.createElement('span');sp.textContent=s;a.appendChild(sp);m.appendChild(a)});d.appendChild(m)}
+      else if(part.html){d.innerHTML=part.html}
+      scroll();
+    }
+    let busy=false;
+    chips.addEventListener('click',async e=>{
+      const b=e.target.closest('.chip');if(!b||busy)return;
+      if(b.dataset.q==='again'){[...log.querySelectorAll('.msg')].slice(1).forEach(m=>m.remove());chips.querySelectorAll('.chip').forEach(c=>c.hidden=false);b.remove();return}
+      busy=true;chips.querySelectorAll('.chip').forEach(c=>c.disabled=true);
+      const me=bubble('me');me.textContent=b.textContent;scroll();sfx.tick();b.hidden=true;
+      for(const part of A[b.dataset.q]){
+        await wait(250);
+        const t=document.createElement('div');t.className='msg bot typing';t.innerHTML='<i></i><i></i><i></i>';log.appendChild(t);scroll();
+        await wait(650+Math.random()*300);t.remove();render(part);sfx.beep();
+      }
+      chips.querySelectorAll('.chip').forEach(c=>c.disabled=false);
+      if(![...chips.querySelectorAll('.chip')].some(c=>!c.hidden&&c.dataset.q!=='again')){const r=document.createElement('button');r.className='chip';r.type='button';r.dataset.q='again';r.textContent='Ask again';chips.appendChild(r)}
+      busy=false;
+    });
+  })();
+
+  /* ---------- Dock highlight ---------- */
+  (function(){
+    const links=[...document.querySelectorAll('.dock a[data-sec]')];
     if(!('IntersectionObserver' in window))return;
-    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.dataset.sec===e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.dataset.sec===e.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
     links.forEach(a=>{const s=document.getElementById(a.dataset.sec);if(s)io.observe(s)});
   })();
 
   /* ---------- Reveal on scroll (elements already on screen stay visible) ---------- */
   if('IntersectionObserver' in window && !reduce){
-    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{threshold:.08});
     document.querySelectorAll('.rv').forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre');io.observe(el)}});
   }
 
