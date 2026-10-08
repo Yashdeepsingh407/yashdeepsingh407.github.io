@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://yashdeepsingh.com/</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://yashdeepsingh.com/about.html</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://yashdeepsingh.com/now.html</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://yashdeepsingh.com/projects/</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://yashdeepsingh.com/projects/tender-agent.html</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://yashdeepsingh.com/projects/research-agent.html</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://yashdeepsingh.com/projects/voltfix.html</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://yashdeepsingh.com/projects/robopay.html</loc><lastmod>2026-10-04</lastmod></url>
-  <url><loc>https://yashdeepsingh.com/projects/websites.html</loc><lastmod>2026-10-04</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url><loc>https://yashdeepsingh.com/</loc><lastmod>2026-10-08</lastmod><priority>1.0</priority><image:image><image:loc>https://yashdeepsingh.com/img/yashdeep-singh.jpg</image:loc></image:image><image:image><image:loc>https://yashdeepsingh.com/img/badge.webp</image:loc></image:image><image:image><image:loc>https://yashdeepsingh.com/img/alps.webp</image:loc></image:image><image:image><image:loc>https://yashdeepsingh.com/img/gondola.webp</image:loc></image:image><image:image><image:loc>https://yashdeepsingh.com/img/lake.webp</image:loc></image:image><image:image><image:loc>https://yashdeepsingh.com/img/wall.webp</image:loc></image:image><image:image><image:loc>https://yashdeepsingh.com/img/street.webp</image:loc></image:image></url>
+  <url><loc>https://yashdeepsingh.com/about.html</loc><lastmod>2026-10-08</lastmod><priority>0.8</priority><image:image><image:loc>https://yashdeepsingh.com/img/yashdeep-singh.jpg</image:loc></image:image></url>
+  <url><loc>https://yashdeepsingh.com/now.html</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://yashdeepsingh.com/projects/</loc><lastmod>2026-10-08</lastmod><priority>0.8</priority></url>
+  <url><loc>https://yashdeepsingh.com/projects/tender-agent.html</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://yashdeepsingh.com/projects/research-agent.html</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://yashdeepsingh.com/projects/voltfix.html</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://yashdeepsingh.com/projects/robopay.html</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority><image:image><image:loc>https://yashdeepsingh.com/video/robopay-poster.jpg</image:loc></image:image></url>
+  <url><loc>https://yashdeepsingh.com/projects/websites.html</loc><lastmod>2026-10-08</lastmod><priority>0.6</priority></url>
 </urlset>
