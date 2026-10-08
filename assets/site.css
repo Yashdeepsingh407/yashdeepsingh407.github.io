@@ -1,10 +1,9 @@
 /* Shared styles for all subpages. Same tokens as the homepage. */
 :root{
-  --bg:#F3EBC9;--surface:#E9DFB6;--fg:#0E1116;--muted:#5A5848;--line:#DDD2A6;--accent:#2F49F5;--water:#2F49F5;--todo:#B4540F;
+  --bg:#FFFFFF;--surface:rgba(14,17,22,.045);--fg:#0E1116;--muted:#5B6270;--line:rgba(14,17,22,.09);--accent:#2F49F5;--water:#2F49F5;--todo:#B4540F;
+  --glass:linear-gradient(140deg,rgba(255,255,255,.78),rgba(255,255,255,.46));--glass-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 0 0 1px rgba(14,17,22,.05),0 26px 50px -30px rgba(31,52,190,.38);--blur:blur(20px) saturate(170%);
   --display:"Unbounded","Arial Black",system-ui,sans-serif;--body:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --ease:cubic-bezier(.32,.72,0,1)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B0D12;--surface:#1A1F2B;--fg:#EEF0F5;--muted:#9AA2B2;--line:#262B36;--accent:#8EA0FF;--water:#6F86FF;--todo:#F0A35E;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0B0D12;--surface:#1A1F2B;--fg:#EEF0F5;--muted:#9AA2B2;--line:#262B36;--accent:#8EA0FF;--water:#6F86FF;--todo:#F0A35E;color-scheme:dark}
+  --ease:cubic-bezier(.32,.72,0,1);color-scheme:light}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:var(--accent);text-underline-offset:3px}
@@ -105,6 +104,19 @@ footer a{color:var(--muted)}
 .portrait{display:flex;align-items:center;gap:16px;margin:26px 0 0}
 .portrait img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:4px solid var(--card,#fff);box-shadow:0 14px 26px -16px rgba(14,17,22,.6)}
 .portrait figcaption{font-weight:600;font-size:15px}
+
+/* Glass on white (same as the homepage) */
+html{background:#fff}body{background:transparent;position:relative}
+body::before{content:"";position:fixed;inset:-10vmax;z-index:-1;pointer-events:none;background:radial-gradient(38vmax 34vmax at 88% 4%,rgba(47,73,245,.26),transparent 70%),radial-gradient(34vmax 30vmax at 2% 50%,rgba(56,200,230,.22),transparent 70%),radial-gradient(36vmax 30vmax at 75% 98%,rgba(140,120,255,.2),transparent 70%),#fff}
+.bar{background:rgba(255,255,255,.6);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
+.flow div,.stack3 div,.team4 div,.issue>div,.impact>div,.meta>div,.next a,.portrait img,.vid,.chapters button{-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur)}
+.flow div{background:var(--glass);border:1px solid rgba(255,255,255,.85);box-shadow:var(--glass-shadow);margin:0;border-radius:0}
+.flow{gap:0}
+.stack3 div,.team4 div{background:var(--glass);box-shadow:var(--glass-shadow)}
+.team4 .me{background:linear-gradient(140deg,rgba(47,73,245,.92),rgba(47,73,245,.78))}
+.chapters button{background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.85);box-shadow:var(--glass-shadow);color:var(--fg)}
+.chapters button.on,.chapters button:hover{background:var(--accent);color:#fff}
+.hviz{box-shadow:0 30px 60px -36px rgba(31,52,190,.6)}
 .vid{margin:30px 0 0;border-radius:26px;overflow:hidden;background:#05070d;box-shadow:0 30px 60px -34px rgba(14,17,22,.7)}
 .vid video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#05070d}
 .chapters{display:flex;gap:8px;overflow-x:auto;padding:14px 0 4px;margin:0 -16px;padding-inline:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}

@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:description" content="Business development, AI and water tech. Hydro-Berlin, BHT Berlin, RoboPay at HTW Berlin.">
 <meta property="og:url" content="https://yashdeepsingh.com/">
-<meta name="theme-color" content="#F3EBC9">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="canonical" href="https://yashdeepsingh.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yashdeep Singh">
@@ -36,19 +36,20 @@
    "lazy agent", the agents as staff ID badges, the lazy machine, a swipeable story, contact.
    Thumb nav sits at the bottom on phones and moves to the top on desktop. */
 :root{
-  --bg:#F3EBC9; --card:#FFFDF2; --fg:#0E1116; --muted:#5A5848; --line:#DDD2A6; --surface:#E9DFB6;
-  --cobalt:#2F49F5; --water:#2F49F5; --on-cobalt:#F6F7FB; --cobalt-soft:#DCE2FF;
-  --hero-ink:#F6F7FB; --hero-water:#AFC0FF;
+  /* Glass on white: the page stays white, three soft water-coloured pools sit behind it,
+     and every panel is frosted glass floating over them. */
+  --bg:#FFFFFF; --card:rgba(255,255,255,.62); --fg:#0E1116; --muted:#5B6270; --line:rgba(14,17,22,.09); --surface:rgba(14,17,22,.045);
+  --cobalt:#2F49F5; --water:#2F49F5; --on-cobalt:#FFFFFF; --cobalt-soft:rgba(47,73,245,.10);
+  --hero-ink:#0E1116; --hero-water:#2F49F5;
+  --glass:linear-gradient(140deg,rgba(255,255,255,.78),rgba(255,255,255,.46));
+  --glass-edge:rgba(255,255,255,.85);
+  --glass-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 0 0 1px rgba(14,17,22,.05),0 26px 50px -30px rgba(31,52,190,.38);
+  --blur:blur(20px) saturate(170%);
   --display:"Unbounded","Arial Black",system-ui,sans-serif;
   --body:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
   --ease:cubic-bezier(.32,.72,0,1); --r:26px;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0B0D12; --card:#141821; --fg:#EEF0F5; --muted:#9AA2B2; --line:#262B36; --surface:#1A1F2B;
-  --cobalt:#3651FF; --water:#6F86FF; --cobalt-soft:#1E2550; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0B0D12; --card:#141821; --fg:#EEF0F5; --muted:#9AA2B2; --line:#262B36; --surface:#1A1F2B;
-  --cobalt:#3651FF; --water:#6F86FF; --cobalt-soft:#1E2550; color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -333,6 +334,49 @@ h1{font-family:var(--display);font-weight:800;font-size:min(8.2vw,124px);line-he
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .contact{margin-top:110px}
 @media (min-width:900px){.pointer{right:40px;top:-20px;width:190px}.pointer img{width:190px;height:190px}.pointer figcaption{right:178px;top:14px;font-size:15px}.contact{margin-top:40px}}
+
+
+/* ---------- Glass layer ---------- */
+html{background:#fff}
+body{background:transparent;position:relative}
+body::before{content:"";position:fixed;inset:-10vmax;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(38vmax 34vmax at 88% 6%,rgba(47,73,245,.30),transparent 70%),
+    radial-gradient(34vmax 30vmax at 4% 46%,rgba(56,200,230,.26),transparent 70%),
+    radial-gradient(36vmax 30vmax at 70% 96%,rgba(140,120,255,.22),transparent 70%),
+    #fff}
+.glass,.chat,.tile,.yr,.fact,.quest,.notif,.dock,.contact{
+  background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);
+  border:1px solid var(--glass-edge);box-shadow:var(--glass-shadow)}
+.tile:hover{box-shadow:inset 0 1px 0 #fff,0 0 0 1px rgba(47,73,245,.18),0 34px 60px -30px rgba(31,52,190,.5)}
+.tile .clip{background:rgba(14,17,22,.08)}
+.tile .photo{background:rgba(255,255,255,.55);box-shadow:inset 0 0 0 1px rgba(14,17,22,.05)}
+.tile.blue .photo{background:var(--cobalt)}
+.tile.human .photo{background:#222}
+.quest .pic{background:rgba(255,255,255,.6);box-shadow:inset 0 0 0 1px rgba(14,17,22,.05)}
+.msg.bot{background:rgba(14,17,22,.05)}
+.mini a{background:rgba(255,255,255,.75)}
+.yr.now{background:linear-gradient(140deg,rgba(47,73,245,.92),rgba(47,73,245,.78));border-color:rgba(255,255,255,.35);color:#fff}
+.fact{border-radius:20px}
+/* Hero: no slab, the name floats on the page and its reflection is cobalt */
+.hero{background:transparent;color:var(--fg);border-radius:0;overflow:visible}
+.intro{background:var(--glass);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border:1px solid var(--glass-edge);box-shadow:var(--glass-shadow)}
+.intro i{background:rgba(46,204,113,.15)}
+.hero-foot span{border-color:rgba(14,17,22,.12);background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.hero .btn.white,.contact .btn.white{background:var(--cobalt);color:#fff;box-shadow:0 14px 28px -14px rgba(47,73,245,.8)}
+.hero .btn.white:hover,.contact .btn.white:hover{background:#2238D6}
+.hero .btn.ghost,.contact .btn.ghost{background:rgba(255,255,255,.6);color:var(--fg);border:1px solid var(--glass-edge);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);box-shadow:var(--glass-shadow)}
+.hero .btn.ghost:hover,.contact .btn.ghost:hover{background:rgba(255,255,255,.85)}
+/* Lazy machine: smoked glass, so the white canvas lines stay readable */
+.lazy{background:linear-gradient(150deg,rgba(14,17,22,.9),rgba(22,28,48,.84));-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 30px 60px -32px rgba(14,17,22,.6);border-radius:var(--r)}
+.lazy canvas{border-radius:var(--r)}
+/* Contact: a glass panel instead of a cobalt slab */
+.contact{color:var(--fg);border-radius:34px 34px 0 0;border-bottom:0}
+.contact h2{color:var(--fg)}
+.contact p{color:var(--muted)}
+.foot{color:var(--muted)}
+.pointer img{border-color:#fff}
+.notif{background:rgba(255,255,255,.72)}
 
 /* Reveal */
 .rv{transition:opacity .8s var(--ease),transform .8s var(--ease)}
