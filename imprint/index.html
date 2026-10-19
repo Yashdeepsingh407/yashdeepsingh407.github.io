@@ -21,7 +21,7 @@
 <div><h4>Work</h4><ul><li><a href="../work-with-me/index.html">Work with me</a></li></ul></div>
 <div><h4>Legal</h4><ul><li><a href="../privacy/index.html">Privacy</a></li><li><a href="../imprint/index.html">Imprint</a></li></ul></div>
 </div><div class="wm" aria-hidden="true">Yashdeep Singh</div>
-<div class="fine2"><span>© 2026 Yashdeep Singh. Berlin.</span><span><a href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener me">LinkedIn</a> · <a href="https://www.instagram.com/yash_btw/" target="_blank" rel="noopener me">Instagram</a> · <a href="https://github.com/Yashdeepsingh407" target="_blank" rel="noopener me">GitHub</a></span></div></div></footer><script>
+<div class="fine2"><span>© 2026 Yashdeep Singh. Berlin.</span><span><a href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener me">LinkedIn</a> · <a href="https://www.instagram.com/yash_btw/" target="_blank" rel="noopener me">Instagram</a> · <a href="https://github.com/Yashdeepsingh407" target="_blank" rel="noopener me">GitHub</a></span></div></div></footer><div class="uc" id="uc" role="dialog" aria-modal="true" aria-labelledby="uc-t" hidden><div class="ucbox"><div class="ucicon" aria-hidden="true">🚧</div><h2 id="uc-t">Still under construction</h2><p>I am still building this site. Some pages and details will change. Thanks for stopping by!</p><button class="btn" type="button" id="uc-ok">Got it</button></div></div><script>
 (function(){
 var hd=document.querySelector('.hd');var mb=document.querySelector('.menu');
 if(mb){mb.addEventListener('click',function(){var o=hd.classList.toggle('open');mb.setAttribute('aria-expanded',o)});document.addEventListener('keydown',function(e){if(e.key==='Escape'){hd.classList.remove('open');mb.setAttribute('aria-expanded',false)}})}
@@ -30,4 +30,5 @@ document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener(
 if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(d,function(){})}else{var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');d()}catch(e){}a.remove()}})});
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)})}else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')})}
 })();
-</script></body></html>
+</script>
+<script>(function(){var u=document.getElementById('uc'),b=document.getElementById('uc-ok');if(!u)return;var seen=false;try{seen=sessionStorage.getItem('uc')==='1'}catch(e){}if(seen)return;u.hidden=false;b.focus();function c(){u.hidden=true;try{sessionStorage.setItem('uc','1')}catch(e){}}b.addEventListener('click',c);u.addEventListener('click',function(e){if(e.target===u)c()});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!u.hidden)c()})})();</script></body></html>
