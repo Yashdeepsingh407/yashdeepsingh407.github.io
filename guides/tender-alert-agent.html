@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Build a tender alert agent that costs 0 EUR | Guide by Yashdeep Singh</title>
+<meta name="description" content="A step-by-step guide to a daily agent that finds public tenders for you, adds the real deadline and link, and emails a clean digest.">
+<link rel="canonical" href="https://yashdeepsingh.com/guides/tender-alert-agent.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Yashdeep Singh">
+<meta property="og:title" content="Build a tender alert agent that costs 0 EUR | Guide by Yashdeep Singh"><meta property="og:description" content="A step-by-step guide to a daily agent that finds public tenders for you, adds the real deadline and link, and emails a clean digest."><meta property="og:url" content="https://yashdeepsingh.com/guides/tender-alert-agent.html">
+<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml"><link rel="icon" href="/favicon-48.png?v=2" sizes="48x48" type="image/png"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<meta property="og:image" content="https://yashdeepsingh.com/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://yashdeepsingh.com/og.png"><meta name="author" content="Yashdeep Singh">
+<link rel="me" href="https://www.linkedin.com/in/yashdeepsingh407/"><link rel="me" href="https://www.instagram.com/yash_btw/"><link rel="me" href="https://github.com/Yashdeepsingh407">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Yashdeep Singh", "item": "https://yashdeepsingh.com/"}, {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://yashdeepsingh.com/guides/"}, {"@type": "ListItem", "position": 3, "name": "Build a tender alert agent that costs 0 EUR", "item": "https://yashdeepsingh.com/guides/tender-alert-agent.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Build a tender alert agent that costs 0 EUR", "description": "A step-by-step guide to a daily agent that finds public tenders for you, adds the real deadline and link, and emails a clean digest.", "inLanguage": "en", "totalTime": "PT8M", "author": {"@type": "Person", "name": "Yashdeep Singh", "url": "https://yashdeepsingh.com/"}}</script>
+<link rel="preload" href="../assets/fonts/unbounded-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="bar"><div class="wrap"><a class="home" href="../">Yashdeep Singh</a><nav aria-label="Main"><a href="../about.html">About</a><a href="../projects/index.html">Projects</a><a href="../guides/index.html" aria-current="page">Guides</a><a href="../now.html">Now</a><a href="../#contact">Contact</a></nav></div></div>
+<div class="wrap">
+<header class="page">
+  <p class="kind">Guide</p>
+  <div class="titlewrap"><h1>Build a tender alert agent that costs 0 EUR</h1></div>
+  <div class="refl" aria-hidden="true" data-t="Build a tender alert agent that costs 0 EUR"></div>
+  <p class="lede">Public tenders hide in thousands of notices. This agent reads them every morning and sends you only the ones that fit.</p>
+  
+  
+</header>
+<main id="main">
+<div class="gmeta"><span class="gtag">Python</span><span class="gtag">Agent</span><span class="gtag">8 min read</span></div><section><h2>What you build</h2><p>A small Python script that runs every morning on GitHub Actions (free), pulls new public tenders, filters them, adds the deadline and a working link, and emails you one tidy digest.</p>
+<ol class="steps"><li><b>Fetch.</b> Pull the day's new notices from the public tender feed.</li><li><b>Filter.</b> Keep only the ones that match your keywords <em>and</em> sector codes.</li><li><b>Enrich.</b> Add the deadline and link from the original eForms record.</li><li><b>Clean.</b> Remove duplicates and notices that already closed.</li><li><b>Send.</b> One email, newest and closest deadline first.</li></ol></section>
+<section><h2>The three bugs that cost me days</h2>
+<h3>1. Missing links</h3><p>Some notices come without a link. Use a fallback chain: direct link, then the buyer's profile page, then a search link built from the notice ID. Never send an item with no way to open it.</p>
+<h3>2. Wrong deadlines</h3><p>The feed's deadline field is often empty or wrong. Read it from the original eForms record instead, and skip the item if you cannot find one.</p>
+<h3>3. Keywords alone are not enough</h3><p>A search for "well renovation" also returned the renovation of a town fountain. Combine keywords with sector codes (CPV) so only real matches get through.</p></section>
+<section><h2>Run it for free</h2><p>Put the script in a GitHub repository, add a scheduled workflow (<code>cron</code>) and store the email credentials as repository secrets. GitHub runs it every morning, no server needed.</p>
+<pre><code>on:
+  schedule:
+    - cron: "0 6 * * *"
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -r requirements.txt
+      - run: python agent.py
+        env:
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}</code></pre></section>
+<section><h2>See it in action</h2><p>This is the agent from my <a href="../projects/tender-agent.html">tender agent project</a>.</p></section><section><div class="newsbox"><h2>The Lazy Letter</h2><p class="nsub">One thing I automated this week. Free.</p><div class="news-soon"><p>The Lazy Letter starts soon. Follow me on LinkedIn to hear first.</p><a class="news-btn" href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">Follow on LinkedIn</a></div></div></section>
+</main>
+<div class="next"><a href="index.html">All guides</a><a href="find-the-right-contact.html">Next: Find the right contact at any company with Claude</a></div>
+</div>
+<footer><div class="wrap"><span>© 2026 Yashdeep Singh</span><a href="../guides/">Guides</a><a href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">LinkedIn</a></div></footer>
+<script>
+(function(){document.querySelectorAll('form[data-news]').forEach(function(f){f.addEventListener('submit',function(e){
+if(!f.hasAttribute('data-preview'))return;e.preventDefault();var m=f.querySelector('.msg');m.hidden=false;m.textContent='Preview only: the newsletter provider is not connected yet.'})})})();
+</script>
+</body></html>

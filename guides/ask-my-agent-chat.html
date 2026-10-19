@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Build the Ask my agent chat for your own site | Guide by Yashdeep Singh</title>
+<meta name="description" content="How the chat on yashdeepsingh.com works: chips, a typing indicator and pre-written answers, with no API costs and no server.">
+<link rel="canonical" href="https://yashdeepsingh.com/guides/ask-my-agent-chat.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Yashdeep Singh">
+<meta property="og:title" content="Build the Ask my agent chat for your own site | Guide by Yashdeep Singh"><meta property="og:description" content="How the chat on yashdeepsingh.com works: chips, a typing indicator and pre-written answers, with no API costs and no server."><meta property="og:url" content="https://yashdeepsingh.com/guides/ask-my-agent-chat.html">
+<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml"><link rel="icon" href="/favicon-48.png?v=2" sizes="48x48" type="image/png"><link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<meta property="og:image" content="https://yashdeepsingh.com/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://yashdeepsingh.com/og.png"><meta name="author" content="Yashdeep Singh">
+<link rel="me" href="https://www.linkedin.com/in/yashdeepsingh407/"><link rel="me" href="https://www.instagram.com/yash_btw/"><link rel="me" href="https://github.com/Yashdeepsingh407">
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Yashdeep Singh", "item": "https://yashdeepsingh.com/"}, {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://yashdeepsingh.com/guides/"}, {"@type": "ListItem", "position": 3, "name": "Build the Ask my agent chat for your own site", "item": "https://yashdeepsingh.com/guides/ask-my-agent-chat.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Build the Ask my agent chat for your own site", "description": "How the chat on yashdeepsingh.com works: chips, a typing indicator and pre-written answers, with no API costs and no server.", "inLanguage": "en", "totalTime": "PT7M", "author": {"@type": "Person", "name": "Yashdeep Singh", "url": "https://yashdeepsingh.com/"}}</script>
+<link rel="preload" href="../assets/fonts/unbounded-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="bar"><div class="wrap"><a class="home" href="../">Yashdeep Singh</a><nav aria-label="Main"><a href="../about.html">About</a><a href="../projects/index.html">Projects</a><a href="../guides/index.html" aria-current="page">Guides</a><a href="../now.html">Now</a><a href="../#contact">Contact</a></nav></div></div>
+<div class="wrap">
+<header class="page">
+  <p class="kind">Guide</p>
+  <div class="titlewrap"><h1>Build the Ask my agent chat for your own site</h1></div>
+  <div class="refl" aria-hidden="true" data-t="Build the Ask my agent chat for your own site"></div>
+  <p class="lede">The chat on my homepage looks like AI but runs on pre-written answers. That makes it fast, free and always on brand.</p>
+  
+  
+</header>
+<main id="main">
+<div class="gmeta"><span class="gtag">Web</span><span class="gtag">Web build</span><span class="gtag">7 min read</span></div><section><h2>Why pre-written</h2><p>A real model costs money per message, can say wrong things about you, and needs a server. For a portfolio, ten good answers cover almost every question.</p></section>
+<section><h2>Steps</h2><ol class="steps"><li><b>Pick the questions</b> visitors really ask: who are you, what did you build, can I hire you.</li><li><b>Write the answers</b> short, in your voice, with a link when it helps.</li><li><b>Add chips</b> (buttons) so people tap instead of type.</li><li><b>Fake the thinking</b> with a typing indicator of about 600 ms.</li><li><b>Keep it accessible</b> so the chat works with a keyboard and a screen reader.</li></ol></section>
+<section><h2>The core in 12 lines</h2><pre><code>const answers = {
+  who:  "I'm Yashdeep, I build AI agents in Berlin.",
+  hire: "Yes. Message me on LinkedIn."
+};
+document.querySelectorAll('[data-q]').forEach(btn =&gt; {
+  btn.onclick = () =&gt; {
+    addMsg('me', btn.textContent);
+    showTyping();
+    setTimeout(() =&gt; addMsg('bot', answers[btn.dataset.q]), 600);
+  };
+});</code></pre></section>
+<section><h2>See it live</h2><p>Try it on the <a href="../index.html#chat">homepage</a>.</p></section><section><div class="newsbox"><h2>The Lazy Letter</h2><p class="nsub">One thing I automated this week. Free.</p><div class="news-soon"><p>The Lazy Letter starts soon. Follow me on LinkedIn to hear first.</p><a class="news-btn" href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">Follow on LinkedIn</a></div></div></section>
+</main>
+<div class="next"><a href="index.html">All guides</a><a href="tender-alert-agent.html">Next: Build a tender alert agent that costs 0 EUR</a></div>
+</div>
+<footer><div class="wrap"><span>© 2026 Yashdeep Singh</span><a href="../guides/">Guides</a><a href="https://www.linkedin.com/in/yashdeepsingh407/" target="_blank" rel="noopener">LinkedIn</a></div></footer>
+<script>
+(function(){document.querySelectorAll('form[data-news]').forEach(function(f){f.addEventListener('submit',function(e){
+if(!f.hasAttribute('data-preview'))return;e.preventDefault();var m=f.querySelector('.msg');m.hidden=false;m.textContent='Preview only: the newsletter provider is not connected yet.'})})})();
+</script>
+</body></html>
